@@ -1,6 +1,16 @@
 "use client";
 import React from "react";
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToFavorite,
+  removeFromFavorite,
+} from "../GlobalRedux/Feature/character/characterSlice";
+
+const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
+
+const coracaoCheio = "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
+
 interface CardProps {
   data: {
     name: string;
@@ -21,11 +31,15 @@ interface CardProps {
 export default function Card({ data }: CardProps) {
   const [click, setClick] = useState<boolean>(false);
 
-  const coracaoVazio =
-    "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
+  const dispatch = useDispatch();
 
-  const coracaoCheio =
-    "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
+  const toggle = (data: CardProps) => {
+    if (click === false) {
+      dispatch(addToFavorite(data));
+    } else {
+      dispatch(removeFromFavorite(data));
+    }
+  };
 
   return (
     <div className="bg-zinc-700 w-[400px] h-[200px] rounded-md flex mt-4 mb-4 relative">
@@ -33,6 +47,7 @@ export default function Card({ data }: CardProps) {
       <img
         onClick={(): void => {
           setClick(!click);
+          toggle(data);
         }}
         className="absolute justify-self-start w-8 h-8 ml-2 mt-2 cursor-pointer hover:animate-pulse"
         src={click ? coracaoCheio : coracaoVazio}

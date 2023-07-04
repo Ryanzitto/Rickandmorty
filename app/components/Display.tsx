@@ -1,46 +1,33 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "./CardCharacter";
-import { useState } from "react";
+import { RootState } from "../GlobalRedux/store";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  saveData,
+  saveInfo,
+} from "../GlobalRedux/Feature/character/characterSlice";
 
-interface Props {
-  dataProp: {
-    info: {
-      next: string | null;
-      prev: string | null;
-    };
-    results: Array<{
-      id: number;
-      name: string;
-      image: string;
-      species: string;
-      status: string;
-      type: string;
-      location: {
-        name: string;
-      };
-      origin: {
-        name: string;
-      };
-      gender: string;
-    }> | null;
-  };
-  erro: string | null;
-}
+export default function Display() {
+  const data = useSelector((state: RootState) => state.character.data);
+  const info = useSelector((state: RootState) => state.character.info);
+  const [prev, setPrev] = useState(info?.prev);
+  const [next, setNext] = useState(info?.next);
 
-export default function Display({ dataProp, erro }: Props) {
-  const [next, setNext] = useState(dataProp?.info.next);
-  const [prev, setPrev] = useState(dataProp?.info.prev);
-  const [data, setData] = useState(dataProp?.results);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    setNext(info?.next);
+    setPrev(info?.prev);
+  }, [info]);
 
   const nextPage = () => {
     axios.get(`${next}`).then(
       (response) => {
         console.log("funcionou");
         console.log(response);
-        setData(response.data.results);
-        setNext(response.data.info.next);
-        setPrev(response.data.info.prev);
+        dispatch(saveData(response.data.results));
+        dispatch(saveInfo(response.data.info));
       },
       (error) => {
         console.log(error);
@@ -53,9 +40,8 @@ export default function Display({ dataProp, erro }: Props) {
       (response) => {
         console.log("funcionou");
         console.log(response);
-        setData(response.data.results);
-        setNext(response.data.info.next);
-        setPrev(response.data.info.prev);
+        dispatch(saveData(response.data.results));
+        dispatch(saveInfo(response.data.info));
       },
       (error) => {
         console.log(error);
@@ -63,12 +49,9 @@ export default function Display({ dataProp, erro }: Props) {
     );
   };
 
-  useEffect(() => {
-    console.log(erro);
-  }, [erro]);
   return (
     <>
-      <div className="w-[80%] flex flex-col justify-center items-center bg-zinc-800  rounded-md px-8 pt-4 pb-8">
+      <div className="w-[80%] lex flex-col justify-center items-center bg-zinc-900 opacity-80 rounded-md px-8 pt-4 pb-8">
         <div className="p-2 w-[100%] flex justify-center items-center gap-4 pb-4">
           {prev === null ? (
             <div className="rounded-full bg-red-400 bg-opacity-50  w-8 h-8 flex justify-center items-center text-xl transition-all cursor-pointer text-white font-black hover:cursor-not-allowed">{`<`}</div>
@@ -90,7 +73,7 @@ export default function Display({ dataProp, erro }: Props) {
           ) : null}
         </div>
         {data != null && (
-          <div className="overflow-y-auto bg-zinc-800 w-[100%] h-[350px] max-h-[350px] max-h-fit flex flex-col justify-start items-center">
+          <div className="overflow-y-auto bg-zinc-900 opacity-80 w-[100%] h-[500px] flex flex-col justify-start items-center">
             {data?.map((item) => {
               return <Card key={item.id} data={item} />;
             })}

@@ -36,7 +36,7 @@ export default function SectionHome() {
             </div> */}
           {/* <div className="w-full h-[50%]"></div> */}
           <img
-            className="w-[500px] h-[500px] animate-pulse mt-32"
+            className="hidden w-[500px] h-[500px] animate-pulse mt-32 lg:flex"
             src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-moon-mod-download-35.png"
           />
         </div>

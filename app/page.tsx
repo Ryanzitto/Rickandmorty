@@ -13,9 +13,10 @@ export default function Home() {
     });
   };
   return (
-    <main className="h-[400vh] bg-neutral-800 overflow-x-hidden flex-col">
+    <main className="bg-neutral-800 overflow-x-hidden flex-col">
       <SectionHome />
       <Characters />
+      <Locations />
     </main>
   );
 }

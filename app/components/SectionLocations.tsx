@@ -1,13 +1,127 @@
-export default function Locations() {
+"use client";
+import axios from "axios";
+import DisplayLocation from "./Location/DisplayLocation";
+import { RootState } from "../GlobalRedux/store";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  saveData,
+  saveInfo,
+  saveErro,
+} from "../GlobalRedux/Feature/location/locationSlice";
+import { useEffect, useState } from "react";
+import Info from "./Location/InfoLocation";
+
+export default function Characters() {
+  const data = useSelector((state: RootState) => state.location.data);
+  const erro = useSelector((state: RootState) => state.location.erro);
+  const url = useSelector((state: RootState) => state.location.url);
+
+  const [dataUrl, setDataUrl] = useState(null);
+  const [pesquisa, setPesquisa] = useState("");
+  const [mostraPesquisa, setMostraPesquisa] = useState<boolean | null>(null);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    axios.get(`${url}`).then(
+      (response) => {
+        console.log(response);
+        setDataUrl(response.data);
+      },
+      (error) => {
+        console.log(error);
+      }
+    );
+  }, [url]);
+
+  const getLocations = () => {
+    dispatch(saveData(null));
+    const baseURL = "https://rickandmortyapi.com/api";
+    axios.get(`${baseURL}/location/?name=${pesquisa}`).then(
+      (response) => {
+        setMostraPesquisa(true);
+        dispatch(saveData(response.data.results));
+        dispatch(saveInfo(response.data.info));
+      },
+      (error) => {
+        dispatch(saveErro(error.response.data.error));
+      }
+    );
+  };
+
+  const pesquisaHandleChange = (e: any) => {
+    setMostraPesquisa(false);
+    setPesquisa(e.target.value);
+    dispatch(saveErro(null));
+  };
+
   return (
     <>
-      <div className="h-screen w-screen bg-no-repeat flex section-scroll">
-        <div className="h-full font-black flex justify-center text-white flex-col pl-40 pt-10 gap-4">
-          <h1 className="text-9xl tracking-wide">RICK</h1>
-          <h1 className="text-9xl w-86 bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-green-700 to-green-500 tracking-wide">
-            AND
-          </h1>
-          <h1 className="text-9xl tracking-wide">MORTY</h1>
+      <div className="h-[1200px] w-screen flex-col justify-center pb-10 pt-56 lg:flex lg:flex-row">
+        <div className="w-full flex flex-col items-center justify-start rounded-md">
+          <div className="w-[80%] h-28 flex-col justify-center bg-zinc-900 opacity-80 rounded-md sm:flex sm:flex-row items-center lg:w-[90%] xl:w-[80%]">
+            <div className="w-[100%] flex justify-center items-center">
+              <h1 className="hidden text-white text-md opacity-50 font-black cursor-pointer transition-colors hover:opacity-70 pb-4 sm:text-2xl sm:pb-0 md:text-3xl sm:flex">
+                LOCATIONS
+              </h1>
+            </div>
+            <div className="w-[100%] mt-6 flex flex-col justify-end items-center gap-2 sm:mt-0">
+              <h2 className="text-[10px] text-white opacity-70 tracking-wider font-medium">
+                SEARCH FOR LOCATIONS NAMES
+              </h2>
+              <div
+                onChange={pesquisaHandleChange}
+                className="w-56 h-6 rounded-md flex"
+              >
+                <input className="w-48 h-8 rounded-l-md bg-zinc-800 focus:outline-none text-center focus:animate-pulse text-white font-bold text-lg tracking-wider" />
+                <div
+                  onClick={getLocations}
+                  className="w-8 h-8 bg-zinc-800 rounded-r-md flex justify-center items-center cursor-pointer transition-all hover:opacity-90 hover:bg-green-600"
+                >
+                  <img
+                    className="w-[20px]"
+                    src="https://cdn-icons-png.flaticon.com/128/2311/2311526.png"
+                  />
+                </div>
+              </div>
+              {mostraPesquisa === true && pesquisa !== "" && (
+                <span className="h-0 text-white/40 text-sm mt-1">{`Showing results for: ${pesquisa}`}</span>
+              )}
+            </div>
+          </div>
+
+          <div className="w-full flex mt-8 justify-center">
+            {data !== null && <DisplayLocation />}
+          </div>
+
+          {data === null && erro === null && (
+            <div className="w-full h-56 flex justify-center items-center">
+              <h1 className="text-xl text-white font-semibold opacity-60 tracking-wider animate-pulse">
+                SEARCH FOR A LOCATION
+              </h1>
+            </div>
+          )}
+          {data === null && erro != null && (
+            <div className="w-full h-full flex justify-center items-start">
+              <h1 className="text-3xl text-red-500 font-semibold animate-pulse">
+                {erro}
+              </h1>
+            </div>
+          )}
+        </div>
+        <div className="w-full h-fit flex justify-center items-start">
+          <div className="w-[80%] h-full max-h-[80%] flex flex-col justify-center rounded-lg lg:w-[90%] xl:w-[80%]">
+            {url === null && (
+              <div className="w-full h-[600px] flex justify-center items-center">
+                <img
+                  className="grayscale opacity-5"
+                  src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-ruefers-deviantart-22.png"
+                />
+              </div>
+            )}
+            <div className="w-full flex flex-col justify-center items-center">
+              {url !== null && <Info data={dataUrl} />}
+            </div>
+          </div>
         </div>
       </div>
     </>

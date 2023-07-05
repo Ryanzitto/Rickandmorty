@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from "react-redux";
 import {
   addToFavorite,
   removeFromFavorite,
-} from "../GlobalRedux/Feature/character/characterSlice";
+} from "../../GlobalRedux/Feature/character/characterSlice";
 
 const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 
@@ -42,8 +42,11 @@ export default function Card({ data }: CardProps) {
   };
 
   return (
-    <div className="bg-zinc-700 w-[400px] h-[200px] rounded-md flex mt-4 mb-4 relative">
-      <img className="w-[200px] h-[200px] rounded-l-md" src={data?.image} />
+    <div className="bg-zinc-700 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px]">
+      <img
+        className="w-[200px] h-[200px] rounded-t-md sm:rounded-l-md sm:rounded-none"
+        src={data?.image}
+      />
       <img
         onClick={(): void => {
           setClick(!click);

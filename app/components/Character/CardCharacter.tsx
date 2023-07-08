@@ -42,7 +42,7 @@ export default function Card({ data }: CardProps) {
   };
 
   return (
-    <div className="bg-zinc-700 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px]">
+    <div className="border-[1px] border-slate-200 bg-zinc-100 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px] items-center dark:border-zinc-600 dark:bg-zinc-700">
       <img
         className="w-[200px] h-[200px] rounded-t-md sm:rounded-l-md sm:rounded-none"
         src={data?.image}
@@ -52,10 +52,14 @@ export default function Card({ data }: CardProps) {
           setClick(!click);
           toggle(data);
         }}
-        className="absolute justify-self-start w-8 h-8 ml-2 mt-2 cursor-pointer hover:animate-pulse"
+        className="z-10 absolute justify-self-start w-8 h-8 ml-2 mb-40 cursor-pointer hover:animate-pulse"
         src={click ? coracaoCheio : coracaoVazio}
       />
-      <div className="w-[200px] h-[200px] rounded-r-md">
+      <div className="w-[200px] h-[200px] rounded-r-md text-center">
+        <img
+          className=" hidden w-[200px] h-[200px] grayscale opacity-10 absolute p-2 dark:flex"
+          src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png"
+        />
         <div className="w-full h-10 flex flex-col justify-end items-center">
           <span className="text-white font-bold text-xs bg-zinc-800 px-2 py-1 rounded-md bg-opacity-50 text-center tracking-wider">
             {data?.name}
@@ -63,11 +67,13 @@ export default function Card({ data }: CardProps) {
         </div>
         <div className="w-full h-40 flex flex-col justify-center items-center">
           <div className="flex items-center gap-2">
-            <span className="text-white font-bold text-xs opacity-70">
+            <span className="text-zinc-800 font-bold text-xs text-opacity-70 dark:text-white">
               Status:
             </span>
             <div className="flex gap-2 justify-center items-center">
-              <p className="text-white font-bold text-xs">{data?.status}</p>
+              <p className="text-zinc-800 font-bold text-xs dark:text-white">
+                {data?.status}
+              </p>
               {data?.status === "Alive" && (
                 <div className="rounded-full bg-green-500 w-2 h-2"></div>
               )}
@@ -80,26 +86,28 @@ export default function Card({ data }: CardProps) {
             </div>
           </div>
           <div className="flex flex-col items-center pt-2">
-            <span className="text-white font-bold text-xs opacity-70">
+            <span className="text-zinc-800 font-bold text-xs text-opacity-70 dark:text-white">
               Specie/Gender:
             </span>
-            <p className="text-white font-bold text-xs">
+            <p className="text-zinc-800 font-bold text-xs dark:text-white">
               {data?.species} - {data?.gender}
             </p>
           </div>
           <div className="flex flex-col items-center pt-2">
-            <span className="text-white font-bold text-xs opacity-70">
+            <span className="text-zinc-800 font-bold text-xs text-opacity-70 dark:text-white">
               Last location:
             </span>
-            <p className="text-white font-bold text-xs">
+            <p className="text-zinc-800 font-bold text-xs dark:text-white">
               {data?.location?.name}
             </p>
           </div>
           <div className="flex flex-col items-center pt-2">
-            <span className="text-white font-bold text-xs opacity-70">
+            <span className="text-zinc-800 font-bold text-xs text-opacity-70 dark:text-white">
               Origin:
             </span>
-            <p className="text-white font-bold text-xs">{data?.origin?.name}</p>
+            <p className="text-zinc-800 font-bold text-xs dark:text-white ">
+              {data?.origin?.name}
+            </p>
           </div>
         </div>
       </div>

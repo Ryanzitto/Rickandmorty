@@ -2,13 +2,15 @@
 
 import { configureStore } from "@reduxjs/toolkit";
 
-import counterReducer from "./Feature/counter/counterSlice";
+import episodeReducer from "./Feature/episode/episodeSlice";
 import characterReducer from "./Feature/character/characterSlice";
 import locationReducer from "./Feature/location/locationSlice";
+import scrollReducer from "./Feature/scroll/scrollSLice";
 
 export const store = configureStore({
   reducer: {
-    counter: counterReducer,
+    scroll: scrollReducer,
+    episode: episodeReducer,
     character: characterReducer,
     location: locationReducer,
   },

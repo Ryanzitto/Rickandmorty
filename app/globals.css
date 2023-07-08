@@ -1,29 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-/* .my-custom-bg-class {
-  background-image: url(https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-moon-mod-download-35.png);
-  background-position-x: 0px;
-  @media (min-width: 640px) {
-    background-position-x: 300px;
-    background-position-y: 100px;
-  }
-  @media (min-width: 1024px) {
-    background-position-x: 400px;
-    background-position-y: 0px;
-  }
-  @media (min-width: 1280px) {
-    background-position-x: 600px;
-  }
-  @media (min-width: 1536px) {
-    background-position-x: 600px;
-    background-position-y: -80px;
-  }
-} */
-
-/* .teste69 {
-  background-color: #222222b6;
-} */
 
 @layer base {
   html {
@@ -38,7 +15,7 @@
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: #222222;
+  background: rgba(0, 0, 0, 0);
 }
 
 /* Handle */

@@ -88,26 +88,26 @@ export default function Characters() {
   }, [specie, status, gender]);
   return (
     <>
-      <div className="h-[1200px] w-screen flex-col justify-center pb-10 pt-56 lg:flex lg:flex-row">
-        <div className="w-full flex flex-col items-center justify-start rounded-md">
-          <div className="w-[80%] h-28 flex-col justify-center bg-zinc-900 opacity-80 rounded-md sm:flex sm:flex-row items-center lg:w-[90%] xl:w-[80%]">
+      <div className="w-screen flex-col justify-center pb-10 pt-56 lg:flex lg:flex-row">
+        <div className="w-full flex flex-col items-center justify-start rounded-md 2xl:max-w-[800px]">
+          <div className="w-[80%] h-28 flex-col justify-center border-[1px] border-slate-200 dark:border-none bg-white dark:bg-zinc-900 rounded-md sm:flex sm:flex-row items-center lg:w-[90%] xl:w-[80%]">
             <div className="w-[100%] flex justify-center items-center">
-              <h1 className="hidden text-white text-md opacity-50 font-black cursor-pointer transition-colors hover:opacity-70 pb-4 sm:text-2xl sm:pb-0 md:text-3xl sm:flex">
+              <h1 className="hidden text-zinc-800 text-opacity-80 dark:text-white text-md dark:opacity-50 font-black cursor-pointer transition-colors hover:text-opacity-70  dark:hover:text-opacity-70 pb-4 sm:text-2xl sm:pb-0 md:text-3xl sm:flex">
                 CHARACTERS
               </h1>
             </div>
             <div className="w-[100%] mt-6 flex flex-col justify-end items-center gap-2 sm:mt-0">
-              <h2 className="text-[10px] text-white opacity-70 tracking-wider font-medium">
+              <h2 className="text-[10px] text-zinc-800 dark:text-white text-opacity-70 tracking-wider font-bold dark:font-medium">
                 SEARCH FOR CHARACTER'S NAMES
               </h2>
               <div
                 onChange={pesquisaHandleChange}
                 className="w-56 h-6 rounded-md flex"
               >
-                <input className="w-48 h-8 rounded-l-md bg-zinc-800 focus:outline-none text-center focus:animate-pulse text-white font-bold text-lg tracking-wider" />
+                <input className="w-48 h-8 rounded-l-md bg-zinc-200 dark:bg-zinc-800 focus:outline-none text-zinc-800 text-center focus:animate-pulse dark:text-white font-bold text-lg tracking-wider" />
                 <div
                   onClick={getCharacter}
-                  className="w-8 h-8 bg-zinc-800 rounded-r-md flex justify-center items-center cursor-pointer transition-all hover:opacity-90 hover:bg-green-600"
+                  className="w-8 h-8 bg-zinc-200 dark:bg-zinc-800 rounded-r-md flex justify-center items-center cursor-pointer transition-all dark:hover:opacity-90 dark:hover:bg-green-600 hover:opacity-90 hover:bg-green-600"
                 >
                   <img
                     className="w-[20px]"
@@ -116,7 +116,7 @@ export default function Characters() {
                 </div>
               </div>
               {mostraPesquisa === true && pesquisa !== "" && (
-                <span className="h-0 text-white/40 text-sm mt-1">{`Showing results for: ${pesquisa}`}</span>
+                <span className="h-0 text-zinc-800/40 dark:text-white/40 text-[12px] mt-1 font-bold tracking-wider">{`Showing results for: ${pesquisa}`}</span>
               )}
             </div>
           </div>
@@ -129,7 +129,7 @@ export default function Characters() {
 
           {data === null && erro === null && (
             <div className="w-full h-56 flex justify-center items-center">
-              <h1 className="text-xl text-white font-semibold opacity-60">
+              <h1 className="text-xl text-zinc-800/80 dark:text-white font-semibold opacity-60">
                 SEARCH FOR CHARACTER'S
               </h1>
             </div>
@@ -142,20 +142,19 @@ export default function Characters() {
             </div>
           )}
         </div>
-        <div className="w-full flex justify-center items-start pt-6 lg:pt-0">
-          <div className="w-[80%] max-h-[83%] bg-zinc-900 opacity-80 rounded-lg lg:w-[90%] xl:w-[80%]">
-            <div className="w-full h-20 text-white flex justify-center items-center">
+        <div className="w-full flex justify-center items-start pt-6 lg:pt-0 2xl:max-w-[800px]">
+          <div className="w-[80%] max-h-[83%] border-[1px] border-slate-200 dark:border-none  bg-white dark:bg-zinc-900 rounded-lg lg:w-[90%] xl:w-[80%]">
+            <div className="w-full h-20 text-zinc-800 dark:text-white flex justify-center items-center">
               <h1 className="font-black text-lg px-2 py-2 opacity-40 rounded-md transition-colors cursor-default hover:opacity-30 sm:text-2xl md:text-3xl">
                 FAVORITES BOARD
               </h1>
             </div>
             <div className="w-full h-96 flex justify-center items-center">
-              {favorites === null && (
-                <img
-                  className="opacity-5 w-[400px] h-[400px] grayscale"
-                  src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-moon-mod-download-35.png"
-                />
-              )}
+              <img
+                className="opacity-5 w-[400px] h-[400px] grayscale hidden lg:absolute lg:flex"
+                src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-moon-mod-download-35.png"
+              />
+
               {favorites !== null && (
                 <div className=" w-full h-full p-6 overflow-auto flex justify-center">
                   <div className="flex w-[80%] justify-center flex-wrap gap-4">
@@ -166,7 +165,7 @@ export default function Characters() {
                           className="w-40 h-40 relative flex justify-center items-end hover:animate-pulse"
                         >
                           <img
-                            className="rounded-md absolute"
+                            className="rounded-md absolute dark:border-none border-[1px] border-zinc-500"
                             src={item.image}
                           />
                           <span className="text-xs absolute text-white bg-zinc-800 bg-opacity-80 rounded-md mb-1 p-1 text-center">
@@ -181,12 +180,12 @@ export default function Characters() {
             </div>
             <div className="w-full h-20 flex justify-center items-center">
               {favorites === null && (
-                <h2 className="text-white opacity-40 font-bold text-2xl px-2 py-2 rounded-md tracking-wider cursor-default hover:opacity-30">
+                <h2 className="text-zinc-800 dark:text-white opacity-40 font-black text-2xl px-2 py-2 rounded-md tracking-wider cursor-default hover:opacity-30">
                   {`NO ITEMS HERE YET :(`}
                 </h2>
               )}
               {favorites !== null && (
-                <h2 className="text-white opacity-40 font-bold text-lg px-2 py-2 rounded-md tracking-wider cursor-default hover:opacity-30 sm:text-xl md:text-2xl">
+                <h2 className="text-zinc-800 dark:text-white opacity-40 font-black text-lg px-2 py-2 rounded-md tracking-wide cursor-default hover:opacity-30 sm:text-xl md:text-2xl">
                   {` FAVORITES: ${favorites.length}`}
                 </h2>
               )}

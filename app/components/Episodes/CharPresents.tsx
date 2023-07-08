@@ -2,14 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 interface Prop {
-  url: string | null;
+  url: string;
 }
-
-export default function Residents({ url }: Prop) {
-  const [data, setData] = useState();
+export default function CharPresents({ url }: Prop) {
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    axios.get(`${url}`).then(
+    axios.get(url).then(
       (response) => {
         console.log(response);
         setData(response.data.image);
@@ -19,13 +18,9 @@ export default function Residents({ url }: Prop) {
       }
     );
   }, []);
-
   return (
-    <div className="w-16 h-16">
-      <img
-        className="rounded-md border-[1px] border-zinc-500 dark:border-none"
-        src={data}
-      />
+    <div className="w-16 h-16 flex justify-center items-center">
+      {data !== null && <img src={data} className="rounded-md w-16 h-16" />}
     </div>
   );
 }

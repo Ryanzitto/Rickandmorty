@@ -3,13 +3,13 @@ import axios from "axios";
 import DisplayLocation from "./Location/DisplayLocation";
 import { RootState } from "../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import Info from "./Location/InfoLocation";
 import {
   saveData,
   saveInfo,
   saveErro,
 } from "../GlobalRedux/Feature/location/locationSlice";
-import { useEffect, useState } from "react";
-import Info from "./Location/InfoLocation";
 
 export default function Characters() {
   const data = useSelector((state: RootState) => state.location.data);
@@ -56,26 +56,26 @@ export default function Characters() {
 
   return (
     <>
-      <div className="h-[1200px] w-screen flex-col justify-center pb-10 pt-56 lg:flex lg:flex-row">
-        <div className="w-full flex flex-col items-center justify-start rounded-md">
-          <div className="w-[80%] h-28 flex-col justify-center bg-zinc-900 opacity-80 rounded-md sm:flex sm:flex-row items-center lg:w-[90%] xl:w-[80%]">
+      <div className="w-screen flex-col justify-center pb-10 pt-[100px] lg:pt-56 lg:flex lg:flex-row ">
+        <div className="w-full flex flex-col items-center justify-start rounded-md 2xl:max-w-[800px]">
+          <div className="w-[80%] h-28 flex-col justify-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md sm:flex sm:flex-row items-center lg:w-[90%] xl:w-[80%]">
             <div className="w-[100%] flex justify-center items-center">
-              <h1 className="hidden text-white text-md opacity-50 font-black cursor-pointer transition-colors hover:opacity-70 pb-4 sm:text-2xl sm:pb-0 md:text-3xl sm:flex">
+              <h1 className="hidden text-zinc-800 text-opacity-80 dark:text-white text-md dark:opacity-50 font-black cursor-pointer transition-colors hover:text-opacity-70  dark:hover:text-opacity-70 pb-4 sm:text-2xl sm:pb-0 md:text-3xl sm:flex">
                 LOCATIONS
               </h1>
             </div>
             <div className="w-[100%] mt-6 flex flex-col justify-end items-center gap-2 sm:mt-0">
-              <h2 className="text-[10px] text-white opacity-70 tracking-wider font-medium">
+              <h2 className="text-[10px] text-zinc-800 dark:text-white opacity-70 tracking-wider font-bold dark:font-medium">
                 SEARCH FOR LOCATIONS NAMES
               </h2>
               <div
                 onChange={pesquisaHandleChange}
                 className="w-56 h-6 rounded-md flex"
               >
-                <input className="w-48 h-8 rounded-l-md bg-zinc-800 focus:outline-none text-center focus:animate-pulse text-white font-bold text-lg tracking-wider" />
+                <input className="w-48 h-8 rounded-l-md bg-zinc-200 dark:bg-zinc-800 focus:outline-none text-zinc-800 text-center focus:animate-pulse dark:text-white font-bold text-lg tracking-wider" />
                 <div
                   onClick={getLocations}
-                  className="w-8 h-8 bg-zinc-800 rounded-r-md flex justify-center items-center cursor-pointer transition-all hover:opacity-90 hover:bg-green-600"
+                  className="w-8 h-8 bg-zinc-200 dark:bg-zinc-800 rounded-r-md flex justify-center items-center cursor-pointer transition-all dark:hover:opacity-90 dark:hover:bg-green-600 hover:opacity-90 hover:bg-green-600"
                 >
                   <img
                     className="w-[20px]"
@@ -84,7 +84,7 @@ export default function Characters() {
                 </div>
               </div>
               {mostraPesquisa === true && pesquisa !== "" && (
-                <span className="h-0 text-white/40 text-sm mt-1">{`Showing results for: ${pesquisa}`}</span>
+                <span className="h-0 text-zinc-800/40 dark:text-white/40 text-[12px] mt-1 font-bold tracking-wider">{`Showing results for: ${pesquisa}`}</span>
               )}
             </div>
           </div>
@@ -95,7 +95,7 @@ export default function Characters() {
 
           {data === null && erro === null && (
             <div className="w-full h-56 flex justify-center items-center">
-              <h1 className="text-xl text-white font-semibold opacity-60 tracking-wider animate-pulse">
+              <h1 className="text-xl text-zinc-800/80 dark:text-white font-semibold opacity-60">
                 SEARCH FOR A LOCATION
               </h1>
             </div>
@@ -108,12 +108,12 @@ export default function Characters() {
             </div>
           )}
         </div>
-        <div className="w-full h-fit flex justify-center items-start">
+        <div className="w-full h-fit flex justify-center pt-20 items-start md:pt-20 lg:pt-0 2xl:max-w-[800px]">
           <div className="w-[80%] h-full max-h-[80%] flex flex-col justify-center rounded-lg lg:w-[90%] xl:w-[80%]">
             {url === null && (
               <div className="w-full h-[600px] flex justify-center items-center">
                 <img
-                  className="grayscale opacity-5"
+                  className="grayscale opacity-20 dark:opacity-5 2xl:max-w-[500px]"
                   src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-ruefers-deviantart-22.png"
                 />
               </div>

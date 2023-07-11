@@ -1,5 +1,6 @@
-import { useState, useEffect } from "react";
-import CharPresents from "./CardCharacter";
+import { useState, useEffect, CSSProperties } from "react";
+import CharPresents from "./CharPresents";
+
 const styleBorder: any = {
   borderBottomRightRadius: "0px",
   borderBottomLeftRadius: "0px",

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import ThemeSwithcer from "../app/ThemeSwitcher";
+import ThemeSwithcer from "../ThemeSwitcher";
 export default function SectionHome() {
   const [nome, setNome] = useState(null);
   const [existeNome, setExisteNome] = useState(false);

@@ -10,7 +10,7 @@ interface Prop {
   } | null;
 }
 
-export default function Info({ data }: any) {
+export default function Info({ data }: Prop) {
   return (
     <div className="w-full flex flex-col justify-center items-center gap-6">
       <div className="w-[100%] lg:w-[80%] bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 p-6 rounded-md">
@@ -42,7 +42,7 @@ export default function Info({ data }: any) {
         </span>
         <div className="w-[80%] rounded-md h-64 flex justify-center items-center gap-6 flex-wrap p-6 overflow-auto mt-4">
           <div className="z-10 w-full flex justify-center flex-wrap gap-6">
-            {data?.residents?.map((item: any) => {
+            {data?.residents?.map((item) => {
               return <Residents key={item} url={item} />;
             })}
           </div>

@@ -1,33 +1,45 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import {
   addToFavorite,
   removeFromFavorite,
-} from "../app/GlobalRedux/Feature/character/characterSlice";
+} from "../../GlobalRedux/Feature/character/characterSlice";
 
 const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 
 const coracaoCheio = "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
 
-export default function Card({ data }: any) {
-  // const [click, setClick] = useState(false);
+interface CardProps {
+  data: {
+    name: string;
+    image: string;
+    species: string;
+    status: string;
+    type: string;
+    location: {
+      name: string;
+    };
+    origin: {
+      name: string;
+    };
+    gender: string;
+  } | null;
+}
 
-<<<<<<< HEAD:components/CardCharacter.tsx
-  // const dispatch = useDispatch();
-=======
 export default function Card({ data }: CardProps) {
   const [click, setClick] = useState<boolean>(false);
->>>>>>> parent of 3dc3b9e (feat):app/components/Character/CardCharacter.tsx
 
-  // const toggle = (data: any) => {
-  //   if (click === false) {
-  //     dispatch(addToFavorite(data));
-  //   } else {
-  //     dispatch(removeFromFavorite(data));
-  //   }
-  // };
+  const dispatch = useDispatch();
+
+  const toggle = (data: CardProps) => {
+    if (click === false) {
+      dispatch(addToFavorite(data));
+    } else {
+      dispatch(removeFromFavorite(data));
+    }
+  };
 
   return (
     <div className="border-[1px] border-slate-200 bg-zinc-100 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px] items-center dark:border-zinc-600 dark:bg-zinc-700">
@@ -36,12 +48,12 @@ export default function Card({ data }: CardProps) {
         src={data?.image}
       />
       <img
-        // onClick={() => {
-        //   setClick(!click);
-        //   toggle(data);
-        // }}
+        onClick={(): void => {
+          setClick(!click);
+          toggle(data);
+        }}
         className="bg-white/80 rounded-full p-2 absolute w-10 h-10 ml-2 mb-36 cursor-pointer hover:animate-pulse"
-        // src={click ? coracaoCheio : coracaoVazio}
+        src={click ? coracaoCheio : coracaoVazio}
       />
       <div className="w-[200px] h-[200px] rounded-r-md text-center">
         <img

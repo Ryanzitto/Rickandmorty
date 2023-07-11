@@ -12,8 +12,8 @@ export default function Footer() {
           <div className="w-[400px] mt-6">
             <p className="text-md text-white">
               {`
-            I'm a front-end developer looking for a job opportunity,you can help
-            me if you refer me for a job or internship. thanks :)`}
+              I'm a front-end developer looking for a job opportunity,you can help
+              me if you refer me for a job or internship. thanks :)`}
             </p>
           </div>
         </div>

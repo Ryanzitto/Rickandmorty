@@ -1,9 +1,8 @@
 import "./globals.css";
 import { Inter } from "next/font/google";
-import Header from "../components/Header";
+import Header from "./components/Home/Header";
 import { Providers } from "./GlobalRedux/provider";
 import ProviderTheme from "./providers";
-import ThemeSwitcher from "./ThemeSwitcher";
 
 const inter = Inter({ subsets: ["latin"] });
 

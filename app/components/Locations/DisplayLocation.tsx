@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import CardLocation from "./CardLocation";
-import { RootState } from "../app/GlobalRedux/store";
+import { RootState } from "../../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   saveData,
   saveInfo,
-} from "../app/GlobalRedux/Feature/location/locationSlice";
+} from "../../GlobalRedux/Feature/location/locationSlice";
 
 export default function DisplayLocation() {
   const data = useSelector((state: RootState) => state.location.data);

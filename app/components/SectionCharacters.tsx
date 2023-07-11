@@ -10,7 +10,7 @@ import {
   saveErro,
 } from "../GlobalRedux/Feature/character/characterSlice";
 import Filters from "./Character/Filters";
-
+import Who from "./Character/Whocharacter";
 export default function Characters() {
   const [pesquisa, setPesquisa] = useState("");
   const [mostraPesquisa, setMostraPesquisa] = useState<boolean | null>(null);
@@ -23,10 +23,6 @@ export default function Characters() {
   const favorites = useSelector(
     (state: RootState) => state.character.favorites
   );
-
-  useEffect(() => {
-    console.log(favorites);
-  }, [favorites]);
 
   const dispatch = useDispatch();
 
@@ -121,7 +117,13 @@ export default function Characters() {
             </div>
           </div>
 
-          <Filters func1={setaEspecie} func2={setaStatus} func3={setaGender} />
+          <div className="flex justify-center w-full">
+            <Filters
+              func1={setaEspecie}
+              func2={setaStatus}
+              func3={setaGender}
+            />
+          </div>
 
           <div className="w-full flex mt-8 justify-center">
             {data !== null && <Display />}
@@ -142,22 +144,17 @@ export default function Characters() {
             </div>
           )}
         </div>
-        <div className="w-full flex justify-center items-start pt-6 lg:pt-0 2xl:max-w-[800px]">
-          <div className="w-[80%] max-h-[83%] border-[1px] border-slate-200 dark:border-none  bg-white dark:bg-zinc-900 rounded-lg lg:w-[90%] xl:w-[80%]">
+        <div className="w-full flex flex-col justify-between gap-6 items-center pt-6 lg:pt-0 2xl:max-w-[800px]">
+          <div className="w-[80%] pb-10 border-[1px] border-slate-200 dark:border-none  bg-white dark:bg-zinc-900 rounded-lg lg:w-[90%] xl:w-[80%]">
             <div className="w-full h-20 text-zinc-800 dark:text-white flex justify-center items-center">
               <h1 className="font-black text-lg px-2 py-2 opacity-40 rounded-md transition-colors cursor-default hover:opacity-30 sm:text-2xl md:text-3xl">
                 FAVORITES BOARD
               </h1>
             </div>
             <div className="w-full h-96 flex justify-center items-center">
-              <img
-                className="opacity-5 w-[400px] h-[400px] grayscale hidden lg:absolute lg:flex"
-                src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-moon-mod-download-35.png"
-              />
-
               {favorites !== null && (
-                <div className=" w-full h-full p-6 overflow-auto flex justify-center">
-                  <div className="flex w-[80%] justify-center flex-wrap gap-4">
+                <div className=" w-full h-full p-6 flex justify-center">
+                  <div className="flex w-[80%] justify-center flex-wrap gap-4 overflow-auto">
                     {favorites.map((item) => {
                       return (
                         <div
@@ -178,19 +175,8 @@ export default function Characters() {
                 </div>
               )}
             </div>
-            <div className="w-full h-20 flex justify-center items-center">
-              {favorites === null && (
-                <h2 className="text-zinc-800 dark:text-white opacity-40 font-black text-2xl px-2 py-2 rounded-md tracking-wider cursor-default hover:opacity-30">
-                  {`NO ITEMS HERE YET :(`}
-                </h2>
-              )}
-              {favorites !== null && (
-                <h2 className="text-zinc-800 dark:text-white opacity-40 font-black text-lg px-2 py-2 rounded-md tracking-wide cursor-default hover:opacity-30 sm:text-xl md:text-2xl">
-                  {` FAVORITES: ${favorites.length}`}
-                </h2>
-              )}
-            </div>
           </div>
+          <Who />
         </div>
       </div>
     </>

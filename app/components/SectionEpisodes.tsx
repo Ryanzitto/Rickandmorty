@@ -9,7 +9,6 @@ import {
   saveInfo,
   saveErro,
 } from "../GlobalRedux/Feature/episode/episodeSlice";
-import { scrollToTop } from "../GlobalRedux/Feature/scroll/scrollSLice";
 
 export default function Episodes() {
   const data = useSelector((state: RootState) => state.episode.data);
@@ -42,9 +41,9 @@ export default function Episodes() {
 
   return (
     <>
-      <div className="h-[1200px] w-screen flex-col justify-center pb-10 pt-[100px] lg:pt-56 lg:flex lg:flex-row ">
+      <div className="h-[1200px] w-screen flex-col justify-center pb-10 pt-[100px] lg:pt-56">
         <div className="w-full flex flex-col items-center justify-start rounded-md 2xl:max-w-[800px]">
-          <div className="w-[80%] h-28 flex-col justify-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md sm:flex sm:flex-row items-center lg:w-[90%] xl:w-[80%]">
+          <div className="w-[80%] h-28 flex-col justify-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md sm:flex sm:flex-row items-center">
             <div className="w-[100%] flex justify-center items-center">
               <h1 className="hidden text-zinc-800 text-opacity-80 dark:text-white text-md dark:opacity-50 font-black cursor-pointer transition-colors hover:text-opacity-70  dark:hover:text-opacity-70 pb-4 sm:text-2xl sm:pb-0 md:text-3xl sm:flex">
                 EPISODES
@@ -74,18 +73,16 @@ export default function Episodes() {
               )}
             </div>
           </div>
-          <div className=" w-[80%] lg:w-[100%] h-[600px] flex items-center justify-center mt-8">
+          <div className=" w-[100%] h-[600px] flex items-center justify-center mt-8">
             {data !== null && <DisplayEpisode />}
           </div>
         </div>
-        <div className="w-full h-full flex justify-center pt-20 items-end md:pt-20 lg:pt-0 2xl:max-w-[800px]">
-          <div className="h-16 w-[90%] flex justify-end items-center">
-            <img
-              onClick={() => dispatch(scrollToTop())}
-              src="https://cdn-icons-png.flaticon.com/128/4315/4315710.png"
-              className="w-16 h-16 animate-bounce cursor-pointer"
-            />
-          </div>
+        <div className="w-full h-32 flex justify-end items-center pr-10">
+          <img
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            src="https://cdn-icons-png.flaticon.com/128/4315/4315710.png"
+            className="w-16 h-16 animate-bounce cursor-pointer"
+          />
         </div>
       </div>
     </>

@@ -1,3 +1,4 @@
+"use client";
 export default function Header() {
   return (
     <header className="h-20 w-full bg-neutral-800 position: absolute bg-opacity-30 flex justify-center">
@@ -6,13 +7,22 @@ export default function Header() {
       </div>
       <div className="sm:w-3/4 h-full sm:pr-20 xl:pr-[200px] pr-0 w-100">
         <ul className="sm:gap-20 flex h-full w-full items-center justify-end 2xl:justify-end gap-10 ">
-          <li className="font-black text-white tracking-widest text-xs cursor-pointer hover:opacity-70">
+          <li
+            onClick={() => window.scrollTo({ top: 800, behavior: "smooth" })}
+            className="font-black text-white tracking-widest text-xs cursor-pointer hover:opacity-70"
+          >
             CHARACTERS
           </li>
-          <li className="font-black text-white tracking-widest text-xs cursor-pointer hover:opacity-70">
+          <li
+            onClick={() => window.scrollTo({ top: 1850, behavior: "smooth" })}
+            className="font-black text-white tracking-widest text-xs cursor-pointer hover:opacity-70"
+          >
             LOCATIONS
           </li>
-          <li className="font-black text-white tracking-widest text-xs cursor-pointer hover:opacity-70">
+          <li
+            onClick={() => window.scrollTo({ top: 2900, behavior: "smooth" })}
+            className="font-black text-white tracking-widest text-xs cursor-pointer hover:opacity-70"
+          >
             EPISODES
           </li>
         </ul>

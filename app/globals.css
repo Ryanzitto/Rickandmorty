@@ -8,6 +8,11 @@
   }
 }
 
+.classPersonalized {
+  background-color: rgb(38, 141, 38);
+  position: absolute;
+}
+
 /* width */
 ::-webkit-scrollbar {
   width: 5px;

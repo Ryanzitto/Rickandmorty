@@ -11,12 +11,11 @@ interface Prop {
 }
 
 export default function Info({ data }: Prop) {
-  console.log(data);
   return (
     <div className="w-full flex flex-col justify-center items-center gap-6">
       <div className="w-[100%] lg:w-[80%] bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 p-6 rounded-md">
         <div className="flex justify-center items-center">
-          <h1 className="text-zinc-800 dark:bg-zinc-800/40 dark:text-white/80 text-2xl px-2 py-1 rounded-md font-black tracking-widest cursor-default">
+          <h1 className="text-zinc-800 text-center dark:bg-zinc-800/40 dark:text-white/80 text-2xl px-2 py-1 rounded-md font-black tracking-widest cursor-default">
             {data?.name}
           </h1>
         </div>
@@ -41,10 +40,6 @@ export default function Info({ data }: Prop) {
         <span className="text-zinc-800 dark:bg-zinc-800/40 dark:text-white/80 text-2xl px-2 py-1 rounded-md font-black tracking-widest cursor-default">
           Residents:
         </span>
-        <img
-          className="w-[300px] h-[300px] grayscale opacity-5 absolute p-2"
-          src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png"
-        />
         <div className="w-[80%] rounded-md h-64 flex justify-center items-center gap-6 flex-wrap p-6 overflow-auto mt-4">
           <div className="z-10 w-full flex justify-center flex-wrap gap-6">
             {data?.residents?.map((item) => {

@@ -3,32 +3,25 @@ import SectionHome from "./components/SectionHome";
 import Characters from "./components/SectionCharacters";
 import Locations from "./components/SectionLocations";
 import Episodes from "./components/SectionEpisodes";
+import Footer from "./components/FooterApp";
 
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "./GlobalRedux/store";
-import { scrollReset } from "./GlobalRedux/Feature/scroll/scrollSLice";
+import getReduxStore from "./configureStore";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
 
 export default function Home() {
-  const dispatch = useDispatch();
-  const scroll = useSelector((state: RootState) => state.scroll.scrollTo);
-
-  useEffect(() => {
-    if (scroll === "TOP") {
-      scrollTo({
-        top: 0,
-        behavior: "smooth",
-      });
-      dispatch(scrollReset());
-    }
-  }, [scroll]);
-
+  const { store, persistor } = getReduxStore();
   return (
     <main className="bg-zinc-100 dark:bg-neutral-800 overflow-x-hidden flex-col">
-      <SectionHome />
-      <Characters />
-      <Locations />
-      <Episodes />
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <SectionHome />
+          <Characters />
+          <Locations />
+          <Episodes />
+          <Footer />
+        </PersistGate>
+      </Provider>
     </main>
   );
 }

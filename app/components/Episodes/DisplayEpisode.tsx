@@ -52,7 +52,7 @@ export default function DisplayEpisode() {
 
   return (
     <>
-      <div className="w-[100%] flex flex-col justify-center items-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md px-8 pt-4 pb-8 lg:w-[90%] xl:w-[80%]">
+      <div className="w-[80%] flex flex-col justify-center items-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md px-8 pt-4 pb-8 lg:w-[80%] xl:w-[80%]">
         <div className="p-2 w-[100%] flex justify-center items-center gap-4 pb-4">
           {prev === null ? (
             <div className="rounded-full bg-red-400 bg-opacity-50  w-8 h-8 flex justify-center items-center text-xl transition-all cursor-pointer text-white font-black hover:cursor-not-allowed">{`<`}</div>

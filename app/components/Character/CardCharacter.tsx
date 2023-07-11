@@ -52,7 +52,7 @@ export default function Card({ data }: CardProps) {
           setClick(!click);
           toggle(data);
         }}
-        className="z-10 absolute justify-self-start w-8 h-8 ml-2 mb-40 cursor-pointer hover:animate-pulse"
+        className="bg-white/80 rounded-full p-2 absolute w-10 h-10 ml-2 mb-36 cursor-pointer hover:animate-pulse"
         src={click ? coracaoCheio : coracaoVazio}
       />
       <div className="w-[200px] h-[200px] rounded-r-md text-center">

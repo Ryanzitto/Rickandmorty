@@ -12,8 +12,8 @@ export default function SectionHome() {
   };
 
   return (
-    <div className="overflow-x-hidden bg-no-repeat flex h-screen">
-      <div className="overflow-hidden w-screen h-screen teste69 flex">
+    <div className="overflow-x-hidden bg-no-repeat flex h-[600px]">
+      <div className="overflow-hidden w-screen h-[600px] teste69 flex">
         <div className="w-2/4 font-black flex justify-center items-start text-zinc-800 dark:text-white flex-col gap-4">
           <div className="w-full pl-4 sm:pl-16 lg:pl-32 2xl:pl-56 pt-28 cursor-default">
             <div className="w-full flex justify-start items-center pl-2">

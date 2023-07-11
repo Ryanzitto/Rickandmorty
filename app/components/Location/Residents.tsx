@@ -11,7 +11,6 @@ export default function Residents({ url }: Prop) {
   useEffect(() => {
     axios.get(`${url}`).then(
       (response) => {
-        console.log(response);
         setData(response.data.image);
       },
       (error) => {

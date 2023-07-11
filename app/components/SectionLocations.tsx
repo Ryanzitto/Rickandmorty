@@ -10,7 +10,7 @@ import {
   saveInfo,
   saveErro,
 } from "../GlobalRedux/Feature/location/locationSlice";
-
+import Where from "./Location/where";
 export default function Characters() {
   const data = useSelector((state: RootState) => state.location.data);
   const erro = useSelector((state: RootState) => state.location.erro);
@@ -24,7 +24,6 @@ export default function Characters() {
   useEffect(() => {
     axios.get(`${url}`).then(
       (response) => {
-        console.log(response);
         setDataUrl(response.data);
       },
       (error) => {
@@ -120,6 +119,9 @@ export default function Characters() {
             )}
             <div className="w-full flex flex-col justify-center items-center">
               {url !== null && <Info data={dataUrl} />}
+            </div>
+            <div className="w-full flex justify-center pt-6">
+              <Where />
             </div>
           </div>
         </div>

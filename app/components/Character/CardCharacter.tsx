@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   addToFavorite,
   removeFromFavorite,
@@ -28,7 +28,7 @@ interface CardProps {
   } | null;
 }
 
-export default function Card({ data }: CardProps | any) {
+export default function Card({ data }: any) {
   const [click, setClick] = useState<boolean>(false);
 
   const dispatch = useDispatch();
@@ -48,7 +48,7 @@ export default function Card({ data }: CardProps | any) {
         src={data?.image}
       />
       <img
-        onClick={(): void => {
+        onClick={() => {
           setClick(!click);
           toggle(data);
         }}

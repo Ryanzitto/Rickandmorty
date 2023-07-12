@@ -28,7 +28,7 @@ interface CardProps {
   } | null;
 }
 
-export default function Card({ data }: CardProps) {
+export default function Card({ data }: CardProps | any) {
   const [click, setClick] = useState<boolean>(false);
 
   const dispatch = useDispatch();

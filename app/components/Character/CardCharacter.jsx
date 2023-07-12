@@ -11,29 +11,12 @@ const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 
 const coracaoCheio = "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
 
-interface CardProps {
-  data: {
-    name: string;
-    image: string;
-    species: string;
-    status: string;
-    type: string;
-    location: {
-      name: string;
-    };
-    origin: {
-      name: string;
-    };
-    gender: string;
-  } | null;
-}
-
-export default function Card({ data }: any) {
-  const [click, setClick] = useState<boolean>(false);
+export default function Card({ data }) {
+  const [click, setClick] = useState(false);
 
   const dispatch = useDispatch();
 
-  const toggle = (data: any) => {
+  const toggle = (data) => {
     if (click === false) {
       dispatch(addToFavorite(data));
     } else {

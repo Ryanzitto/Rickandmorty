@@ -1,25 +1,25 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { RootState } from "../GlobalRedux/store";
+import Card from "./CardCharacter";
+import { RootState } from "../app/GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   saveData,
   saveInfo,
-} from "../GlobalRedux/Feature/episode/episodeSlice";
-import CardEpisodes from "./CardEpisodes";
+} from "../app/GlobalRedux/Feature/character/characterSlice";
 
-export default function DisplayEpisode() {
-  const data = useSelector((state: RootState) => state.episode.data);
-  const info = useSelector((state: RootState) => state.episode.info);
+export default function Display() {
+  const data = useSelector((state: RootState) => state.character.data);
+  const info = useSelector((state: RootState) => state.character.info);
   const [prev, setPrev] = useState(info?.prev);
   const [next, setNext] = useState(info?.next);
+
+  const dispatch = useDispatch();
 
   useEffect(() => {
     setNext(info?.next);
     setPrev(info?.prev);
   }, [info]);
-
-  const dispatch = useDispatch();
 
   const nextPage = () => {
     axios.get(`${next}`).then(
@@ -28,7 +28,6 @@ export default function DisplayEpisode() {
         console.log(response);
         dispatch(saveData(response.data.results));
         dispatch(saveInfo(response.data.info));
-        console.log(data);
       },
       (error) => {
         console.log(error);
@@ -52,7 +51,7 @@ export default function DisplayEpisode() {
 
   return (
     <>
-      <div className="w-[80%] flex flex-col justify-center items-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md px-8 pt-4 pb-8 lg:w-[80%] xl:w-[80%]">
+      <div className="w-[80%] flex flex-col justify-center items-center border-[1px] border-slate-200 bg-white rounded-md px-8 pt-4 pb-8 lg:w-[90%] xl:w-[80%] dark:border-none dark:bg-zinc-900">
         <div className="p-2 w-[100%] flex justify-center items-center gap-4 pb-4">
           {prev === null ? (
             <div className="rounded-full bg-red-400 bg-opacity-50  w-8 h-8 flex justify-center items-center text-xl transition-all cursor-pointer text-white font-black hover:cursor-not-allowed">{`<`}</div>
@@ -74,9 +73,9 @@ export default function DisplayEpisode() {
           ) : null}
         </div>
         {data != null && (
-          <div className="overflow-y-auto bg-white dark:bg-zinc-900 dark:opacity-80 w-[100%] h-[500px] flex flex-col justify-start items-center">
-            {data.map((item) => {
-              return <CardEpisodes key={Math.random() * 100} data={item} />;
+          <div className="overflow-y-auto w-[100%] h-[500px] flex flex-col justify-start items-center dark:bg-zinc-900">
+            {data?.map((item) => {
+              return <Card key={item.id} data={item} />;
             })}
           </div>
         )}

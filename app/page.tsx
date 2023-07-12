@@ -1,9 +1,9 @@
 "use client";
-import SectionHome from "./components/SectionHome";
-import Characters from "./components/SectionCharacters";
-import Locations from "./components/SectionLocations";
-import Episodes from "./components/SectionEpisodes";
-import Footer from "./components/FooterApp";
+import SectionHome from "../components/SectionHome";
+import Characters from "../components/SectionCharacters";
+import Locations from "../components/SectionLocations";
+import Episodes from "../components/SectionEpisodes";
+import Footer from "../components/FooterApp";
 
 import getReduxStore from "./configureStore";
 import { Provider } from "react-redux";

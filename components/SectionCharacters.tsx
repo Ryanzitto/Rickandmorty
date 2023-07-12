@@ -2,13 +2,13 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
 import Display from "./Display";
-import { RootState } from "../GlobalRedux/store";
+import { RootState } from "../app/GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   saveData,
   saveInfo,
   saveErro,
-} from "../GlobalRedux/Feature/character/characterSlice";
+} from "../app/GlobalRedux/Feature/character/characterSlice";
 import Filters from "./Filters";
 import Who from "./Whocharacter";
 export default function Characters() {

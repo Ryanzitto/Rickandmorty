@@ -1,6 +1,6 @@
 "use client";
 import axios from "axios";
-import { RootState } from "../GlobalRedux/store";
+import { RootState } from "../app/GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
 import DisplayEpisode from "./DisplayEpisode";
@@ -8,7 +8,7 @@ import {
   saveData,
   saveInfo,
   saveErro,
-} from "../GlobalRedux/Feature/episode/episodeSlice";
+} from "../app/GlobalRedux/Feature/episode/episodeSlice";
 
 export default function Episodes() {
   const data = useSelector((state: RootState) => state.episode.data);

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import Card from "./CardCharacter";
-import { RootState } from "../GlobalRedux/store";
+import CardLocation from "./CardLocation";
+import { RootState } from "../app/GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   saveData,
   saveInfo,
-} from "../GlobalRedux/Feature/character/characterSlice";
+} from "../app/GlobalRedux/Feature/location/locationSlice";
 
-export default function Display() {
-  const data = useSelector((state: RootState) => state.character.data);
-  const info = useSelector((state: RootState) => state.character.info);
+export default function DisplayLocation() {
+  const data = useSelector((state: RootState) => state.location.data);
+  const info = useSelector((state: RootState) => state.location.info);
   const [prev, setPrev] = useState(info?.prev);
   const [next, setNext] = useState(info?.next);
 
@@ -51,7 +51,7 @@ export default function Display() {
 
   return (
     <>
-      <div className="w-[80%] flex flex-col justify-center items-center border-[1px] border-slate-200 bg-white rounded-md px-8 pt-4 pb-8 lg:w-[90%] xl:w-[80%] dark:border-none dark:bg-zinc-900">
+      <div className="w-[80%] lex flex-col justify-center items-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md px-8 pt-4 pb-8 lg:w-[90%] xl:w-[80%]">
         <div className="p-2 w-[100%] flex justify-center items-center gap-4 pb-4">
           {prev === null ? (
             <div className="rounded-full bg-red-400 bg-opacity-50  w-8 h-8 flex justify-center items-center text-xl transition-all cursor-pointer text-white font-black hover:cursor-not-allowed">{`<`}</div>
@@ -73,9 +73,9 @@ export default function Display() {
           ) : null}
         </div>
         {data != null && (
-          <div className="overflow-y-auto w-[100%] h-[500px] flex flex-col justify-start items-center dark:bg-zinc-900">
+          <div className="overflow-y-auto bg-white dark:bg-zinc-900  w-[100%] h-[500px] flex flex-col justify-start items-center">
             {data?.map((item) => {
-              return <Card key={item.id} data={item} />;
+              return <CardLocation key={item.id} data={item} />;
             })}
           </div>
         )}

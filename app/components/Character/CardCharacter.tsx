@@ -11,18 +11,18 @@ const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 
 const coracaoCheio = "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
 
-export default function Card({ data }) {
-  const [click, setClick] = useState(false);
+export default function Card({ data }: any) {
+  // const [click, setClick] = useState(false);
 
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const toggle = (data) => {
-    if (click === false) {
-      dispatch(addToFavorite(data));
-    } else {
-      dispatch(removeFromFavorite(data));
-    }
-  };
+  // const toggle = (data: any) => {
+  //   if (click === false) {
+  //     dispatch(addToFavorite(data));
+  //   } else {
+  //     dispatch(removeFromFavorite(data));
+  //   }
+  // };
 
   return (
     <div className="border-[1px] border-slate-200 bg-zinc-100 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px] items-center dark:border-zinc-600 dark:bg-zinc-700">
@@ -31,12 +31,12 @@ export default function Card({ data }) {
         src={data?.image}
       />
       <img
-        onClick={() => {
-          setClick(!click);
-          toggle(data);
-        }}
+        // onClick={() => {
+        //   setClick(!click);
+        //   toggle(data);
+        // }}
         className="bg-white/80 rounded-full p-2 absolute w-10 h-10 ml-2 mb-36 cursor-pointer hover:animate-pulse"
-        src={click ? coracaoCheio : coracaoVazio}
+        // src={click ? coracaoCheio : coracaoVazio}
       />
       <div className="w-[200px] h-[200px] rounded-r-md text-center">
         <img

@@ -1,6 +1,7 @@
 "use client";
 
 import { createSlice } from "@reduxjs/toolkit/";
+import { ReactNode } from "react";
 
 export interface dataState {
   data: data | null;

@@ -14,7 +14,12 @@ const coracaoCheio = "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
 export default function Card({ data }: any) {
   // const [click, setClick] = useState(false);
 
+<<<<<<< HEAD:components/CardCharacter.tsx
   // const dispatch = useDispatch();
+=======
+export default function Card({ data }: CardProps) {
+  const [click, setClick] = useState<boolean>(false);
+>>>>>>> parent of 3dc3b9e (feat):app/components/Character/CardCharacter.tsx
 
   // const toggle = (data: any) => {
   //   if (click === false) {

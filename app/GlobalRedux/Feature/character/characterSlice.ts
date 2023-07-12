@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit/";
 export interface dataState {
   data: data | null;
   info: info | null;
-  erro: error | null;
+  erro: any;
   favorites: null | Array<data>;
 }
 interface data {

@@ -3,7 +3,7 @@ import axios from "axios";
 import { RootState } from "../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import { useState } from "react";
-import DisplayEpisode from "./Episodes/DisplayEpisode";
+import DisplayEpisode from "./DisplayEpisode";
 import {
   saveData,
   saveInfo,

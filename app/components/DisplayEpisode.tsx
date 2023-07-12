@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { RootState } from "../../GlobalRedux/store";
+import { RootState } from "../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   saveData,
   saveInfo,
-} from "../../GlobalRedux/Feature/episode/episodeSlice";
+} from "../GlobalRedux/Feature/episode/episodeSlice";
 import CardEpisodes from "./CardEpisodes";
 
 export default function DisplayEpisode() {

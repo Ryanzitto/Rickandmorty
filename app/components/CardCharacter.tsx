@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import {
   addToFavorite,
   removeFromFavorite,
-} from "../../GlobalRedux/Feature/character/characterSlice";
+} from "../GlobalRedux/Feature/character/characterSlice";
 
 const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 

@@ -1,16 +1,16 @@
 "use client";
 import axios from "axios";
-import DisplayLocation from "./Location/DisplayLocation";
+import DisplayLocation from "./DisplayLocation";
 import { RootState } from "../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect, useState } from "react";
-import Info from "./Location/InfoLocation";
+import Info from "./InfoLocation";
 import {
   saveData,
   saveInfo,
   saveErro,
 } from "../GlobalRedux/Feature/location/locationSlice";
-import Where from "./Location/where";
+import Where from "./where";
 export default function Characters() {
   const data = useSelector((state: RootState) => state.location.data);
   const erro = useSelector((state: RootState) => state.location.erro);

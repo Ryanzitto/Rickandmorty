@@ -33,7 +33,7 @@ export default function Card({ data }: any) {
 
   const dispatch = useDispatch();
 
-  const toggle = (data: CardProps) => {
+  const toggle = (data: any) => {
     if (click === false) {
       dispatch(addToFavorite(data));
     } else {

@@ -1,7 +1,7 @@
 "use client";
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
-import Display from "./Characters/Display";
+import Display from "./Character/Display";
 import { RootState } from "../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -9,8 +9,8 @@ import {
   saveInfo,
   saveErro,
 } from "../GlobalRedux/Feature/character/characterSlice";
-import Filters from "./Characters/Filters";
-import Who from "./Characters/WhoCharacter";
+import Filters from "./Character/Filters";
+import Who from "./Character/WhoCharacter";
 export default function Characters() {
   const [pesquisa, setPesquisa] = useState("");
   const [mostraPesquisa, setMostraPesquisa] = useState<boolean | null>(null);

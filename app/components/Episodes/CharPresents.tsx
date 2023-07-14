@@ -17,7 +17,8 @@ export default function CharPresents({ url }: Prop) {
         console.log(error);
       }
     );
-  }, []);
+  }, [url]);
+
   return (
     <div className="w-16 h-16 flex justify-center items-center">
       {data !== null && (

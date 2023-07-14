@@ -17,7 +17,7 @@ export default function Residents({ url }: Prop) {
         console.log(error);
       }
     );
-  }, []);
+  }, [url]);
 
   return (
     <div className="w-16 h-16">

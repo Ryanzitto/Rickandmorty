@@ -81,7 +81,22 @@ export default function Characters() {
   };
 
   useEffect(() => {
-    getCharacter();
+    dispatch(saveData(null));
+    const baseURL = "https://rickandmortyapi.com/api";
+    axios
+      .get(
+        `${baseURL}/character/?name=${pesquisa}&species=${specie}&status=${status}&gender=${gender}`
+      )
+      .then(
+        (response) => {
+          setMostraPesquisa(true);
+          dispatch(saveData(response.data.results));
+          dispatch(saveInfo(response.data.info));
+        },
+        (error) => {
+          dispatch(saveErro(error.response.data.error));
+        }
+      );
   }, [specie, status, gender]);
   return (
     <>

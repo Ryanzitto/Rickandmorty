@@ -97,6 +97,7 @@ export default function Characters() {
           dispatch(saveErro(error.response.data.error));
         }
       );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [specie, status, gender]);
   return (
     <>

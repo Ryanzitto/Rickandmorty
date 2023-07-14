@@ -7,7 +7,7 @@ import Footer from "./components/FooterApp";
 import getReduxStore from "./configureStore";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/integration/react";
-
+import ThemeSwithcer from "./ThemeSwitcher";
 export default function Home() {
   const { store, persistor } = getReduxStore();
   return (
@@ -15,6 +15,7 @@ export default function Home() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <SectionHome />
+          <ThemeSwithcer />
           <Characters />
           <Locations />
           <Episodes />

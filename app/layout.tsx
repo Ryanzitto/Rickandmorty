@@ -2,7 +2,6 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import Header from "./components/Home/Header";
 import { Providers } from "./GlobalRedux/provider";
-import ProviderTheme from "./providers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,7 +20,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <Providers>
           <Header />
-          <ProviderTheme>{children}</ProviderTheme>
+          {children}
         </Providers>
       </body>
     </html>

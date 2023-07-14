@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import axios from "axios";
 import DisplayLocation from "./Locations/DisplayLocation";
 import { RootState } from "../GlobalRedux/store";
@@ -76,9 +77,12 @@ export default function Characters() {
                   onClick={getLocations}
                   className="w-8 h-8 bg-zinc-200 dark:bg-zinc-800 rounded-r-md flex justify-center items-center cursor-pointer transition-all dark:hover:opacity-90 dark:hover:bg-green-600 hover:opacity-90 hover:bg-green-600"
                 >
-                  <img
+                  <Image
                     className="w-[20px]"
                     src="https://cdn-icons-png.flaticon.com/128/2311/2311526.png"
+                    width={20}
+                    height={20}
+                    alt="imagem de lupa"
                   />
                 </div>
               </div>
@@ -111,9 +115,12 @@ export default function Characters() {
           <div className="w-[80%] h-full max-h-[80%] flex flex-col justify-center rounded-lg lg:w-[90%] xl:w-[80%]">
             {url === null && (
               <div className="w-full h-[600px] flex justify-center items-center">
-                <img
+                <Image
                   className="grayscale opacity-20 dark:opacity-5 2xl:max-w-[500px]"
                   src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-ruefers-deviantart-22.png"
+                  width={500}
+                  height={500}
+                  alt="imagem da série rick and morty"
                 />
               </div>
             )}

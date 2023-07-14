@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
 import axios from "axios";
+import Image from "next/image";
 
 interface Data {
   image: string;
@@ -46,7 +47,6 @@ export default function Who() {
 
   const resetaButton = () => {
     setExistTimeOut(false);
-    console.log("teste");
     btnRef.current.style.top = 0;
     btnRef.current.style.right = 0;
   };
@@ -70,7 +70,15 @@ export default function Who() {
       {isClicked && (
         <div className="w-fit h-[80] flex md-pr-24 lg-pr-0 justify-end sm:gap-4 md:gap-20 lg:gap-0 xl:gap-6 2xl:gap-12 gap-4 relative">
           <div className="hidden sm:flex lg:hidden xl:flex w-44 h-44 flex justify-center">
-            {data !== null && <img className="rounded-md" src={data?.image} />}
+            {data !== null && (
+              <Image
+                className="rounded-md"
+                src={data?.image}
+                width={176}
+                height={176}
+                alt="imagem de personagem aleatório da série rick and morty"
+              />
+            )}
             {data === null && <h1>LOADING...</h1>}
           </div>
           <div className="w-[300px] h-full flex flex-col gap-4">

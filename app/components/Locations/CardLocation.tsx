@@ -2,7 +2,7 @@
 import { saveUrl } from "@/app/GlobalRedux/Feature/location/locationSlice";
 import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
-
+import Image from "next/image";
 interface CardProps {
   data: {
     url: string;
@@ -23,9 +23,12 @@ export default function Card({ data }: CardProps) {
 
   return (
     <div className="bg-zinc-100 border-[1px] border-slate-200 dark:border-zinc-600 dark:bg-zinc-700 w-[200px] h-[250px] rounded-md mt-4 mb-4 relative justify-center  sm:flex sm:flex-row sm:w-[250px]">
-      <img
+      <Image
         className="hidden dark:flex grayscale opacity-10 absolute p-2"
         src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png"
+        width={200}
+        height={200}
+        alt="imagem da série rick and morty como background"
       />
       <div className="w-[200px] h-[250px] rounded-r-md flex flex-col justify-evenly items-center text-center z-10">
         <div className="w-[80%] h-10 flex flex-col justify-center items-center font-black">

@@ -9,7 +9,7 @@ import {
   saveInfo,
   saveErro,
 } from "../GlobalRedux/Feature/episode/episodeSlice";
-
+import Image from "next/image";
 export default function Episodes() {
   const data = useSelector((state: RootState) => state.episode.data);
 
@@ -62,9 +62,12 @@ export default function Episodes() {
                   onClick={getEpisodes}
                   className="w-8 h-8 bg-zinc-200 dark:bg-zinc-800 rounded-r-md flex justify-center items-center cursor-pointer transition-all dark:hover:opacity-90 dark:hover:bg-green-600 hover:opacity-90 hover:bg-green-600"
                 >
-                  <img
+                  <Image
                     className="w-[20px]"
                     src="https://cdn-icons-png.flaticon.com/128/2311/2311526.png"
+                    width={20}
+                    height={20}
+                    alt="imagem de lupa"
                   />
                 </div>
               </div>
@@ -78,10 +81,13 @@ export default function Episodes() {
           </div>
         </div>
         <div className="w-full h-32 flex justify-end items-center pr-10">
-          <img
+          <Image
             onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
             src="https://cdn-icons-png.flaticon.com/128/4315/4315710.png"
             className="w-16 h-16 animate-bounce cursor-pointer"
+            width={64}
+            height={64}
+            alt="imagem seta apontando pra cima indicando o inicio do site"
           />
         </div>
       </div>

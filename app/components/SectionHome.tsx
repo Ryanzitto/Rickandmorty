@@ -1,16 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import ThemeSwithcer from "../ThemeSwitcher";
+import Image from "next/image";
 export default function SectionHome() {
-  const [nome, setNome] = useState(null);
-  const [existeNome, setExisteNome] = useState(false);
-  const registraNome = () => {
-    if (nome !== "") {
-      setExisteNome(true);
-    }
-  };
-
   return (
     <div className="overflow-x-hidden bg-no-repeat flex h-[600px]">
       <div className="overflow-hidden w-screen h-[600px] teste69 flex">
@@ -31,16 +23,12 @@ export default function SectionHome() {
           </div>
         </div>
         <div className="w-2/4 h-full font-black flex text-white justify-center items-center 2xl:pr-16">
-          {/* <Notificacao /> */}
-          {/* <div className="w-full h-[50%] flex items-center justify-center pt-20">
-              <h1 className="text-white tracking-wide hover:opacity-70 text-3xl">
-                {`Olá,  ${nome}`}
-              </h1>
-            </div> */}
-          {/* <div className="w-full h-[50%]"></div> */}
-          <img
+          <Image
             className="hidden w-[500px] h-[500px] animate-pulse mt-32 lg:flex 2xl:w-[700px] 2xl:h-[700px]"
             src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-moon-mod-download-35.png"
+            width={500}
+            height={500}
+            alt="imagem dos personagens rick e morty saindo de um portal"
           />
         </div>
       </div>

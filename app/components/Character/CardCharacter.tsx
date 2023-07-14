@@ -1,12 +1,13 @@
 "use client";
 import React from "react";
 import { useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   addToFavorite,
   removeFromFavorite,
 } from "../../GlobalRedux/Feature/character/characterSlice";
 
+import Image from "next/image";
 const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 
 const coracaoCheio = "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
@@ -25,7 +26,7 @@ interface CardProps {
       name: string;
     };
     gender: string;
-  } | null;
+  };
 }
 
 export default function Card({ data }: CardProps) {
@@ -43,11 +44,17 @@ export default function Card({ data }: CardProps) {
 
   return (
     <div className="border-[1px] border-slate-200 bg-zinc-100 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px] items-center dark:border-zinc-600 dark:bg-zinc-700">
-      <img
+      <Image
         className="w-[200px] h-[200px] rounded-t-md sm:rounded-l-md sm:rounded-none"
         src={data?.image}
+        width={200}
+        height={200}
+        alt="Imagem de personagem da série rick and morty"
       />
-      <img
+      <Image
+        width={20}
+        height={20}
+        alt="Imagem de personagem coração"
         onClick={(): void => {
           setClick(!click);
           toggle(data);
@@ -56,9 +63,12 @@ export default function Card({ data }: CardProps) {
         src={click ? coracaoCheio : coracaoVazio}
       />
       <div className="w-[200px] h-[200px] rounded-r-md text-center">
-        <img
+        <Image
           className=" hidden w-[200px] h-[200px] grayscale opacity-10 absolute p-2 dark:flex"
           src="https://www.freepnglogos.com/uploads/rick-and-morty-png/rick-and-morty-portal-shoes-white-clothing-zavvi-23.png"
+          width={200}
+          height={200}
+          alt="Imagem de série rick and morty como background"
         />
         <div className="w-full h-10 flex flex-col justify-end items-center">
           <span className="text-white font-bold text-xs bg-zinc-800 px-2 py-1 rounded-md bg-opacity-50 text-center tracking-wider">

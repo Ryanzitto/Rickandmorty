@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { ChangeEvent, useEffect, useState } from "react";
 import axios from "axios";
 import Display from "./Character/Display";
@@ -94,7 +95,7 @@ export default function Characters() {
             </div>
             <div className="w-[100%] mt-6 flex flex-col justify-end items-center gap-2 sm:mt-0">
               <h2 className="text-[10px] text-zinc-800 dark:text-white text-opacity-70 tracking-wider font-bold dark:font-medium">
-                SEARCH FOR CHARACTER'S NAMES
+                SEARCH FOR CHARACTERS NAMES
               </h2>
               <div
                 onChange={pesquisaHandleChange}
@@ -105,9 +106,12 @@ export default function Characters() {
                   onClick={getCharacter}
                   className="w-8 h-8 bg-zinc-200 dark:bg-zinc-800 rounded-r-md flex justify-center items-center cursor-pointer transition-all dark:hover:opacity-90 dark:hover:bg-green-600 hover:opacity-90 hover:bg-green-600"
                 >
-                  <img
+                  <Image
                     className="w-[20px]"
                     src="https://cdn-icons-png.flaticon.com/128/2311/2311526.png"
+                    width={32}
+                    height={32}
+                    alt="icone de lupa"
                   />
                 </div>
               </div>
@@ -132,7 +136,7 @@ export default function Characters() {
           {data === null && erro === null && (
             <div className="w-full h-56 flex justify-center items-center">
               <h1 className="text-xl text-zinc-800/80 dark:text-white font-semibold opacity-60">
-                SEARCH FOR CHARACTER'S
+                SEARCH FOR CHARACTERS
               </h1>
             </div>
           )}
@@ -161,9 +165,12 @@ export default function Characters() {
                           key={item.name}
                           className="w-40 h-40 relative flex justify-center items-end hover:animate-pulse"
                         >
-                          <img
+                          <Image
                             className="rounded-md absolute dark:border-none border-[1px] border-zinc-500"
                             src={item.image}
+                            width={160}
+                            height={160}
+                            alt="imagem de seus personagens favoritos"
                           />
                           <span className="text-xs absolute text-white bg-zinc-800 bg-opacity-80 rounded-md mb-1 p-1 text-center">
                             {item.name}

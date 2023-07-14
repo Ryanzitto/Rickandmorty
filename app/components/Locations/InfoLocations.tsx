@@ -1,4 +1,3 @@
-import { useState } from "react";
 import Residents from "./Residents";
 
 interface Prop {

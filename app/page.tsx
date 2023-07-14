@@ -15,7 +15,6 @@ export default function Home() {
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <SectionHome />
-          <ThemeSwithcer />
           <Characters />
           <Locations />
           <Episodes />

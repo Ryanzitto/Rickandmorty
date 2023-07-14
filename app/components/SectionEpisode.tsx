@@ -41,8 +41,8 @@ export default function Episodes() {
 
   return (
     <>
-      <div className="h-[1200px] w-screen flex-col justify-center pb-10 pt-[100px] lg:pt-56">
-        <div className="w-full flex flex-col items-center justify-start rounded-md 2xl:max-w-[800px]">
+      <div className="h-[1200px] w-scree flex flex-col justify-center items-center pb-10 pt-[100px] lg:pt-56">
+        <div className="w-full flex flex-col items-center justify-start rounded-md 2xl:max-w-[1600px]">
           <div className="w-[80%] h-28 flex-col justify-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md sm:flex sm:flex-row items-center">
             <div className="w-[100%] flex justify-center items-center">
               <h1 className="hidden text-zinc-800 text-opacity-80 dark:text-white text-md dark:opacity-50 font-black cursor-pointer transition-colors hover:text-opacity-70  dark:hover:text-opacity-70 pb-4 sm:text-2xl sm:pb-0 md:text-3xl sm:flex">

@@ -6,7 +6,7 @@ export interface dataState {
   data: data | null;
   info: info | null;
   erro: any;
-  favorites: null | Array<data>;
+  favorites: any;
 }
 interface data {
   map(
@@ -58,7 +58,7 @@ export const characterSlice = createSlice({
         state.favorites = [action.payload];
       } else {
         const existingItem = state.favorites.find(
-          (item) => item.name === action.payload.name
+          (item: data) => item.name === action.payload.name
         );
         if (!existingItem) {
           state.favorites = [...state.favorites, action.payload];
@@ -68,7 +68,7 @@ export const characterSlice = createSlice({
     removeFromFavorite: (state, action) => {
       if (state.favorites !== null) {
         state.favorites = state.favorites.filter(
-          (item) => item.name !== action.payload.name
+          (item: data) => item.name !== action.payload.name
         );
       }
     },

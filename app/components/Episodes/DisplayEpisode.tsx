@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { RootState } from "../../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
@@ -7,6 +6,7 @@ import {
   saveInfo,
 } from "../../GlobalRedux/Feature/episode/episodeSlice";
 import CardEpisodes from "./CardEpisodes";
+import axios from "axios";
 
 export default function DisplayEpisode() {
   const data = useSelector((state: RootState) => state.episode.data);
@@ -14,18 +14,11 @@ export default function DisplayEpisode() {
   const [prev, setPrev] = useState(info?.prev);
   const [next, setNext] = useState(info?.next);
 
-  useEffect(() => {
-    setNext(info?.next);
-    setPrev(info?.prev);
-  }, [info]);
-
   const dispatch = useDispatch();
 
   const nextPage = () => {
     axios.get(`${next}`).then(
       (response) => {
-        console.log("funcionou");
-        console.log(response);
         dispatch(saveData(response.data.results));
         dispatch(saveInfo(response.data.info));
         console.log(data);
@@ -39,8 +32,6 @@ export default function DisplayEpisode() {
   const prevPage = () => {
     axios.get(`${prev}`).then(
       (response) => {
-        console.log("funcionou");
-        console.log(response);
         dispatch(saveData(response.data.results));
         dispatch(saveInfo(response.data.info));
       },
@@ -50,6 +41,10 @@ export default function DisplayEpisode() {
     );
   };
 
+  useEffect(() => {
+    setNext(info?.next);
+    setPrev(info?.prev);
+  }, [info]);
   return (
     <>
       <div className="w-[80%] flex flex-col justify-center items-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md px-8 pt-4 pb-8 lg:w-[80%] xl:w-[80%]">

@@ -12,17 +12,34 @@ import Image from "next/image";
 const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 const coracaoCheio = "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
 
-export default function Card({ data }: any) {
+interface Prop {
+  data: Data;
+}
+interface Data {
+  image: string;
+  name: string;
+  status: string;
+  species: string;
+  gender: string;
+  location: {
+    name: string;
+  };
+  origin: {
+    name: string;
+  };
+}
+
+export default function Card({ data }: Prop) {
   //
   const [click, setClick] = useState<boolean>(false);
-  const [fav, setFav] = useState<boolean | null | undefined>();
+  const [fav, setFav] = useState<boolean>();
 
   const favorites = useSelector(
     (state: RootState) => state.character.favorites
   );
   const dispatch = useDispatch();
 
-  const toggle = (data: any) => {
+  const toggle = (data: Data) => {
     if (click === false) {
       dispatch(addToFavorite(data));
     } else {
@@ -35,6 +52,10 @@ export default function Card({ data }: any) {
       favorites?.some((item) => JSON.stringify(item) === JSON.stringify(data))
     );
   }, [data, favorites]);
+
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
 
   return (
     <div className="border-[1px] border-slate-200 bg-zinc-100 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px] items-center dark:border-zinc-600 dark:bg-zinc-700">

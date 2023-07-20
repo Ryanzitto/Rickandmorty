@@ -12,6 +12,7 @@ export default function Who() {
   const [data, setData] = useState<Data | null>(null);
   const btnRef = useRef<any>(null);
   const [existTimeOut, setExistTimeOut] = useState(false);
+
   const toggle = () => {
     setIsClicked(true);
     let randomNumber = Math.random() * 100;
@@ -20,7 +21,6 @@ export default function Who() {
       .get(`https://rickandmortyapi.com/api/character/${numberFormated}`)
       .then(
         (response) => {
-          console.log(response);
           setData(response.data);
         },
         (error) => {

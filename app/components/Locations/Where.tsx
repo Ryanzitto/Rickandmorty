@@ -10,7 +10,7 @@ export default function Where() {
   const [isClicked, setIsClicked] = useState(false);
   const [data, setData] = useState<Data | null>(null);
   const btnRef = useRef<any>(null);
-  const [existTimeOut, setExistTimeOut] = useState(false);
+
   const toggle = () => {
     setIsClicked(true);
     let randomNumber = Math.random() * 100;
@@ -19,7 +19,6 @@ export default function Where() {
       .get(`https://rickandmortyapi.com/api/location/${numberFormated}`)
       .then(
         (response) => {
-          console.log(response);
           setData(response.data);
         },
         (error) => {

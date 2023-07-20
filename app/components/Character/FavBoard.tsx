@@ -1,16 +1,33 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../GlobalRedux/store";
-import Image from "next/image";
 import { removeFromFavorite } from "@/app/GlobalRedux/Feature/character/characterSlice";
+import Image from "next/image";
+interface data {
+  map(
+    arg0: (item: any) => import("react").JSX.Element
+  ): import("react").ReactNode;
+  name: string;
+  image: string;
+  species: string;
+  status: string;
+  type: string;
+  location: {
+    name: string;
+  };
+  origin: {
+    name: string;
+  };
+  gender: string;
+}
 
 export default function FavBoard() {
-  const favorites: any = useSelector(
+  const favorites = useSelector(
     (state: RootState) => state.character.favorites
   );
 
   const dispatch = useDispatch();
 
-  const remove = (item: any) => {
+  const remove = (item: data) => {
     dispatch(removeFromFavorite(item));
   };
   return (
@@ -39,7 +56,7 @@ export default function FavBoard() {
         {favorites?.length >= 1 && (
           <div className=" w-full h-full flex justify-center">
             <div className="flex w-[80%] justify-center flex-wrap gap-4 overflow-auto">
-              {favorites?.map((item: any) => {
+              {favorites?.map((item: data) => {
                 return (
                   <div key={item.name} className="w-40 h-40 relative grid">
                     <Image

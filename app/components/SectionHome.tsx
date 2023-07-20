@@ -1,5 +1,4 @@
 "use client";
-
 import ThemeSwithcer from "../ThemeSwitcher";
 import Image from "next/image";
 export default function SectionHome() {

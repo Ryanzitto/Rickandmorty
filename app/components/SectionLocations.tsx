@@ -6,7 +6,7 @@ import {
 } from "../GlobalRedux/Feature/location/locationSlice";
 import { RootState } from "../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import Info from "./Locations/InfoLocations";
 import Image from "next/image";
 import axios from "axios";
@@ -38,7 +38,7 @@ export default function Characters() {
     );
   };
 
-  const pesquisaHandleChange = (e: any) => {
+  const pesquisaHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMostraPesquisa(false);
     setPesquisa(e.target.value);
     dispatch(saveErro(null));

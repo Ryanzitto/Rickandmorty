@@ -1,4 +1,4 @@
-import { useState, useEffect, CSSProperties } from "react";
+import { useState } from "react";
 import CharPresents from "./CharPresents";
 
 const styleBorder: any = {

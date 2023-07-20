@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import Card from "./CardCharacter";
 import { RootState } from "../../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   saveData,
   saveInfo,
 } from "../../GlobalRedux/Feature/character/characterSlice";
+import axios from "axios";
+import Card from "./CardCharacter";
 
 export default function Display() {
   const data = useSelector((state: RootState) => state.character.data);
@@ -16,16 +16,9 @@ export default function Display() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setNext(info?.next);
-    setPrev(info?.prev);
-  }, [info]);
-
   const nextPage = () => {
     axios.get(`${next}`).then(
       (response) => {
-        console.log("funcionou");
-        console.log(response);
         dispatch(saveData(response.data.results));
         dispatch(saveInfo(response.data.info));
       },
@@ -38,7 +31,6 @@ export default function Display() {
   const prevPage = () => {
     axios.get(`${prev}`).then(
       (response) => {
-        console.log(response);
         dispatch(saveData(response.data.results));
         dispatch(saveInfo(response.data.info));
       },
@@ -47,6 +39,11 @@ export default function Display() {
       }
     );
   };
+
+  useEffect(() => {
+    setNext(info?.next);
+    setPrev(info?.prev);
+  }, [info]);
 
   return (
     <>

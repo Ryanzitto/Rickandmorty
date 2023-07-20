@@ -6,10 +6,11 @@ import {
 } from "../GlobalRedux/Feature/episode/episodeSlice";
 import { RootState } from "../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import DisplayEpisode from "./Episodes/DisplayEpisode";
 import axios from "axios";
 import Image from "next/image";
+
 export default function Episodes() {
   const data = useSelector((state: RootState) => state.episode.data);
   const erro = useSelector((state: RootState) => state.episode.erro);
@@ -33,7 +34,7 @@ export default function Episodes() {
     );
   };
 
-  const pesquisaHandleChange = (e: any) => {
+  const pesquisaHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMostraPesquisa(false);
     setPesquisa(e.target.value);
     dispatch(saveErro(null));

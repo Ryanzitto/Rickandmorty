@@ -15,7 +15,6 @@ import Filters from "./Character/Filters";
 import Who from "./Character/WhoCharacter";
 import Spinner from "./spinner";
 import FavBoard from "./Character/FavBoard";
-import ButtonScroll from "./buttonScroll";
 
 export default function Characters() {
   const [pesquisa, setPesquisa] = useState("");
@@ -48,7 +47,7 @@ export default function Characters() {
       );
   };
 
-  const pesquisaHandleChange = (e: any) => {
+  const pesquisaHandleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMostraPesquisa(false);
     setPesquisa(e.target.value);
     dispatch(saveErro(null));

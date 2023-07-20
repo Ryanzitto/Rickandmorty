@@ -1,8 +1,7 @@
-import { useEffect, useState } from "react";
 import Residents from "./Residents";
 import Where from "./Where";
-import axios from "axios";
 import Image from "next/image";
+
 interface Prop {
   data: {
     dimension: string | null;
@@ -12,22 +11,7 @@ interface Prop {
   } | null;
 }
 
-export default function Info({ data }: any) {
-  const [placeholder, setPlaceHolder] = useState<any>(null);
-  useEffect(() => {
-    let randomNumber = Math.random() * 100;
-    let numberFormated = Math.round(randomNumber);
-    const baseURL = "https://rickandmortyapi.com/api";
-    axios.get(`${baseURL}/location/${numberFormated}`).then(
-      (response) => {
-        console.log(response);
-        setPlaceHolder(response?.data);
-      },
-      (error) => {
-        console.log(error);
-      }
-    );
-  }, []);
+export default function Info({ data }: Prop) {
   return (
     <>
       {data && (
@@ -76,7 +60,7 @@ export default function Info({ data }: any) {
                   return <Residents key={item} url={item} />;
                 })}
               </div>
-              {data?.residents?.length <= 0 && (
+              {data?.residents?.length === 0 && (
                 <h1 className="dark:text-white text-zinc-800 tracking-wider font-black text-opacity-60">
                   NOBODY LIVES HERE
                 </h1>

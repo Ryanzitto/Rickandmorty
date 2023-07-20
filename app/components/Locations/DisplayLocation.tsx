@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
-import CardLocation from "./CardLocation";
 import { RootState } from "../../GlobalRedux/store";
 import { useSelector, useDispatch } from "react-redux";
 import {
   saveData,
   saveInfo,
 } from "../../GlobalRedux/Feature/location/locationSlice";
+import axios from "axios";
+import CardLocation from "./CardLocation";
 
 export default function DisplayLocation() {
   const data = useSelector((state: RootState) => state.location.data);
@@ -16,16 +16,9 @@ export default function DisplayLocation() {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    setNext(info?.next);
-    setPrev(info?.prev);
-  }, [info]);
-
   const nextPage = () => {
     axios.get(`${next}`).then(
       (response) => {
-        console.log("funcionou");
-        console.log(response);
         dispatch(saveData(response.data.results));
         dispatch(saveInfo(response.data.info));
       },
@@ -38,8 +31,6 @@ export default function DisplayLocation() {
   const prevPage = () => {
     axios.get(`${prev}`).then(
       (response) => {
-        console.log("funcionou");
-        console.log(response);
         dispatch(saveData(response.data.results));
         dispatch(saveInfo(response.data.info));
       },
@@ -48,6 +39,11 @@ export default function DisplayLocation() {
       }
     );
   };
+
+  useEffect(() => {
+    setNext(info?.next);
+    setPrev(info?.prev);
+  }, [info]);
 
   return (
     <>

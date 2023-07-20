@@ -4,6 +4,10 @@ import React, { useState, useEffect } from "react";
 export default function ButtonScroll() {
   const [showButton, setShowButton] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition =
@@ -30,10 +34,6 @@ export default function ButtonScroll() {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  };
 
   return (
     <div className="button-scroll-container animate-bounce">

@@ -1,7 +1,7 @@
 "use client";
 export default function Header() {
   return (
-    <header className="h-20 w-full bg-neutral-800 position: absolute bg-opacity-30 flex justify-center">
+    <header className="h-20 w-full bg-neutral-800 absolute bg-opacity-30 flex justify-center">
       <div className="lg:pl-32  hidden sm:w-1/4 h-full w-0 pl-10 xl:pl-[200px] sm:flex items-center">
         <h1 className="font-black text-5xl w-[150px] bg-clip-text text-transparent bg-gradient-to-r from-yellow-300 via-green-700 to-green-500 tracking-wide">{`</>`}</h1>
       </div>

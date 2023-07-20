@@ -1,19 +1,19 @@
 "use client";
-import axios from "axios";
-import { RootState } from "../GlobalRedux/store";
-import { useSelector, useDispatch } from "react-redux";
-import { useState } from "react";
-import DisplayEpisode from "./Episodes/DisplayEpisode";
 import {
   saveData,
   saveInfo,
   saveErro,
 } from "../GlobalRedux/Feature/episode/episodeSlice";
+import { RootState } from "../GlobalRedux/store";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect, useState } from "react";
+import DisplayEpisode from "./Episodes/DisplayEpisode";
+import axios from "axios";
 import Image from "next/image";
 export default function Episodes() {
   const data = useSelector((state: RootState) => state.episode.data);
+  const erro = useSelector((state: RootState) => state.episode.erro);
 
-  const [dataUrl, setDataUrl] = useState(null);
   const [pesquisa, setPesquisa] = useState("");
   const [mostraPesquisa, setMostraPesquisa] = useState<boolean | null>(null);
   const dispatch = useDispatch();
@@ -39,9 +39,17 @@ export default function Episodes() {
     dispatch(saveErro(null));
   };
 
+  useEffect(() => {
+    getEpisodes();
+  }, []);
+
+  useEffect(() => {
+    getEpisodes();
+  }, [pesquisa]);
+
   return (
     <>
-      <div className="h-[1200px] w-scree flex flex-col justify-center items-center pb-10 pt-[100px] lg:pt-56">
+      <div className="h-[1100px] w-scree flex flex-col justify-center items-center pb-10 lg:pt-56">
         <div className="w-full flex flex-col items-center justify-start rounded-md 2xl:max-w-[1600px]">
           <div className="w-[80%] h-28 flex-col justify-center bg-white border-[1px] border-slate-200 dark:border-none dark:bg-zinc-900 rounded-md sm:flex sm:flex-row items-center">
             <div className="w-[100%] flex justify-center items-center">
@@ -78,17 +86,21 @@ export default function Episodes() {
           </div>
           <div className=" w-[100%] h-[600px] flex items-center justify-center mt-8">
             {data !== null && <DisplayEpisode />}
+            {data === null && erro === null && (
+              <div className="w-full h-56 flex justify-center items-center">
+                <h1 className="text-xl text-zinc-800/80 dark:text-white font-semibold opacity-60 animate-bounce">
+                  SEARCH FOR EPISODES
+                </h1>
+              </div>
+            )}
+            {data === null && erro != null && (
+              <div className="w-full h-56 flex justify-center items-center">
+                <h1 className="text-3xl text-red-500 font-semibold opacity-60 animate-bounce">
+                  {erro}
+                </h1>
+              </div>
+            )}
           </div>
-        </div>
-        <div className="w-full h-32 flex justify-end items-center pr-10">
-          <Image
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-            src="https://cdn-icons-png.flaticon.com/128/4315/4315710.png"
-            className="w-16 h-16 animate-bounce cursor-pointer"
-            width={64}
-            height={64}
-            alt="imagem seta apontando pra cima indicando o inicio do site"
-          />
         </div>
       </div>
     </>

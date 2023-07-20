@@ -58,7 +58,7 @@ export default function Card({ data }: CardProps) {
           <div className="flex items-center pt-2">
             <button
               onClick={setaInfo}
-              className="font-bold tracking-wider bg-green-500 text-white text-sm rounded-sm transition-colors hover:bg-opacity-60 p-2"
+              className="animate-pulse hover:animate-none font-bold tracking-wider bg-green-500 text-white text-sm rounded-sm transition-colors hover:bg-opacity-60 p-2"
             >
               SHOW MORE
             </button>

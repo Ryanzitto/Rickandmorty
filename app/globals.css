@@ -8,6 +8,23 @@
   }
 }
 
+.button-scroll-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+}
+
+.button-scroll {
+  width: 75px;
+  height: 75px;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .classPersonalized {
   background-color: rgb(38, 141, 38);
   position: absolute;

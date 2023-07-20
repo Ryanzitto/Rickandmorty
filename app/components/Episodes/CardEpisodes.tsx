@@ -16,6 +16,7 @@ interface Props {
     name: string;
     url: string;
     characters: Array<string>;
+    id: string;
   };
 }
 
@@ -33,6 +34,9 @@ export default function CardEpisodes({ data }: Props) {
         onClick={toggle}
         className="bg-zinc-100 dark:bg-zinc-800/90 w-[90%] min-h-[50px] rounded-md flex items-center cursor-pointer transition-colors hover:bg-zinc-300 dark:hover:bg-zinc-950/20"
       >
+        <span className="pl-6 pr-6 text-lg font-bold text-zinc-800 dark:text-white/80 tracking-wide border-r border-zinc-600 dark:border-zinc-700">
+          {data?.id}
+        </span>
         <span className="pl-6 text-lg font-bold text-zinc-800 dark:text-white/80 tracking-wide">
           {data?.name}
         </span>

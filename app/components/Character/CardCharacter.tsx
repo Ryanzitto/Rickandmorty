@@ -1,20 +1,25 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
 import {
   addToFavorite,
   removeFromFavorite,
 } from "../../GlobalRedux/Feature/character/characterSlice";
-
+import { useSelector, useDispatch } from "react-redux";
+import { RootState } from "../../GlobalRedux/store";
 import Image from "next/image";
-const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 
+const coracaoVazio = "https://cdn-icons-png.flaticon.com/128/2589/2589197.png";
 const coracaoCheio = "https://cdn-icons-png.flaticon.com/128/2589/2589175.png";
 
 export default function Card({ data }: any) {
+  //
   const [click, setClick] = useState<boolean>(false);
+  const [fav, setFav] = useState<boolean | null | undefined>();
 
+  const favorites = useSelector(
+    (state: RootState) => state.character.favorites
+  );
   const dispatch = useDispatch();
 
   const toggle = (data: any) => {
@@ -25,6 +30,12 @@ export default function Card({ data }: any) {
     }
   };
 
+  useEffect(() => {
+    setFav(
+      favorites?.some((item) => JSON.stringify(item) === JSON.stringify(data))
+    );
+  }, [data, favorites]);
+
   return (
     <div className="border-[1px] border-slate-200 bg-zinc-100 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px] items-center dark:border-zinc-600 dark:bg-zinc-700">
       <Image
@@ -34,17 +45,19 @@ export default function Card({ data }: any) {
         height={200}
         alt="Imagem de personagem da série rick and morty"
       />
-      <Image
-        width={20}
-        height={20}
-        alt="Imagem de personagem coração"
-        onClick={(): void => {
-          setClick(!click);
-          toggle(data);
-        }}
-        className="bg-white/80 rounded-full p-2 absolute w-10 h-10 ml-2 mb-36 cursor-pointer hover:animate-pulse"
-        src={click ? coracaoCheio : coracaoVazio}
-      />
+      {data !== null && (
+        <Image
+          width={20}
+          height={20}
+          alt="Imagem de personagem coração"
+          onClick={(): void => {
+            setClick(!click);
+            toggle(data);
+          }}
+          className="z-20 bg-white/80 rounded-full p-2 absolute w-8 h-8 sm:w-10 sm:h-10 ml-1 sm:ml-2 mt-2 sm:mt-0 mb-36 cursor-pointer hover:animate-pulse"
+          src={fav ? coracaoCheio : coracaoVazio}
+        />
+      )}
       <div className="w-[200px] h-[200px] rounded-r-md text-center">
         <Image
           className=" hidden w-[200px] h-[200px] grayscale opacity-10 absolute p-2 dark:flex"

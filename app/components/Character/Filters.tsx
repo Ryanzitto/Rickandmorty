@@ -6,10 +6,10 @@ interface Data {
 
 export default function Filters({ func1, func2, func3 }: Data) {
   return (
-    <div className="w-[80%] flex flex-col sm:flex sm:flex-row items-center gap-4 mt-3 font-bold text-zinc-800/80 dark:text-white/80">
+    <div className="w-[90%] flex flex-col sm:flex sm:flex-row items-start  gap-4 mt-4 font-bold text-zinc-800/80 dark:text-white/80">
       <select
         onChange={(e) => func1(e)}
-        className="border-slate-200 border-[1px] dark:border-none  dark:bg-zinc-900 focus:outline-0 rounded-md p-2 tracking-wide"
+        className="min-w-32 border-slate-200 border-[1px] dark:border-none  dark:bg-zinc-900 focus:outline-0 rounded-md p-2 tracking-wide"
       >
         <option>Human</option>
         <option>Alien</option>
@@ -25,7 +25,7 @@ export default function Filters({ func1, func2, func3 }: Data) {
       </select>
       <select
         onChange={(e) => func2(e)}
-        className="border-slate-200 border-[1px] dark:border-none dark:bg-zinc-900  focus:outline-0 rounded-md p-2  tracking-wide"
+        className="w-56 border-slate-200 border-[1px] dark:border-none dark:bg-zinc-900  focus:outline-0 rounded-md p-2  tracking-wide"
       >
         <option>alive</option>
         <option>dead</option>
@@ -34,7 +34,7 @@ export default function Filters({ func1, func2, func3 }: Data) {
       </select>
       <select
         onChange={(e) => func3(e)}
-        className="border-slate-200 border-[1px] dark:border-none  dark:bg-zinc-900 focus:outline-0 rounded-md p-2  tracking-wide"
+        className="w-56 border-slate-200 border-[1px] dark:border-none  dark:bg-zinc-900 focus:outline-0 rounded-md p-2  tracking-wide"
       >
         <option>male</option>
         <option>female</option>

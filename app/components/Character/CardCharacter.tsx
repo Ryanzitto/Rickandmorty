@@ -49,7 +49,9 @@ export default function Card({ data }: Prop) {
 
   useEffect(() => {
     setFav(
-      favorites?.some((item) => JSON.stringify(item) === JSON.stringify(data))
+      favorites?.some(
+        (item: Data) => JSON.stringify(item) === JSON.stringify(data)
+      )
     );
   }, [data, favorites]);
 

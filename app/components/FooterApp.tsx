@@ -62,7 +62,7 @@ export default function Footer() {
                 {`this project was based on the rick and morty series, I remembered
               that I loved this series and decided to do something cool related
               to the series. so i really hope you enjoyed something or other
-              about this site. thanks for getting this far. :)`}
+              about this site. thanks for getting this far.  :)`}
               </p>
             </div>
 

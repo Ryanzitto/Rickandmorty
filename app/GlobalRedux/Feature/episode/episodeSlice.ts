@@ -5,7 +5,7 @@ import { createSlice } from "@reduxjs/toolkit/";
 export interface dataState {
   data: data | null;
   info: info | null;
-  erro: error | null;
+  erro: error | null | any;
 }
 interface data {
   map(
@@ -21,7 +21,7 @@ interface info {
   prev: string | null;
 }
 interface error {
-  erro: string | null;
+  erro: string | null | any;
 }
 
 const initialState: dataState = {

@@ -4,7 +4,7 @@ import Image from "next/image";
 import { removeFromFavorite } from "@/app/GlobalRedux/Feature/character/characterSlice";
 
 export default function FavBoard() {
-  const favorites = useSelector(
+  const favorites: any = useSelector(
     (state: RootState) => state.character.favorites
   );
 
@@ -39,7 +39,7 @@ export default function FavBoard() {
         {favorites?.length >= 1 && (
           <div className=" w-full h-full flex justify-center">
             <div className="flex w-[80%] justify-center flex-wrap gap-4 overflow-auto">
-              {favorites?.map((item) => {
+              {favorites?.map((item: any) => {
                 return (
                   <div key={item.name} className="w-40 h-40 relative grid">
                     <Image

@@ -21,12 +21,12 @@ export default function Footer() {
             <div className="w-[300px] md:w-[400px] mt-6">
               <p className="text-md text-white/60 text-sm">
                 {`
-                I'm a front-end developer, my actual tech stack is the react ecosystem, I'm looking for a job opportunity, you can help
-                me if you refer me for a job or internship. thanks :)`}
+                I'm a front-end developer, my actual tech stack is the react ecosystem,how about we work together? If you have a project idea, we can make it real. thanks :)`}
               </p>
             </div>
           </div>
         </div>
+
         <div className="w-full h-[50%] flex flex-col items-center font-black tracking-wider cursor-default">
           <div className="w-[100%] lg:w-[80%] h-full flex flex-col justify-start items-center mt-16">
             <h1 className="text-3xl text-white transition-all hover:text-opacity-60">

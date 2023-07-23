@@ -55,10 +55,6 @@ export default function Card({ data }: Prop) {
     );
   }, [data, favorites]);
 
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <div className="border-[1px] border-slate-200 bg-zinc-100 w-[200px] h-[400px] rounded-md mt-4 mb-4 relative  sm:flex sm:flex-row sm:w-[400px] sm:h-[200px] items-center dark:border-zinc-600 dark:bg-zinc-700">
       <Image

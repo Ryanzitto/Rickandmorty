@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from "react-redux";
 import { RootState } from "../../GlobalRedux/store";
-import { removeFromFavorite } from "@/app/GlobalRedux/Feature/character/characterSlice";
+import { removeFromFavorite } from "../../GlobalRedux/Feature/character/characterSlice";
 import Image from "next/image";
 interface data {
   map(

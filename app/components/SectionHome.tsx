@@ -1,6 +1,7 @@
 "use client";
 import ThemeSwithcer from "../ThemeSwitcher";
 import Image from "next/image";
+
 export default function SectionHome() {
   return (
     <div className="overflow-x-hidden bg-no-repeat flex h-[600px] 2xl:h-[1000px]">

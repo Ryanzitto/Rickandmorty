@@ -71,7 +71,7 @@ export default function Display() {
         {data != null && (
           <div className="overflow-y-auto w-[100%] h-[500px] flex flex-wrap justify-center gap-6 items-center">
             {data?.map((item) => {
-              return <Card key={item.id} data={item} />;
+              return <Card key={Math.random() * 100} data={item} />;
             })}
           </div>
         )}

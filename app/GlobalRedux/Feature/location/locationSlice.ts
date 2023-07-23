@@ -48,7 +48,6 @@ export const locationSlice = createSlice({
   reducers: {
     saveData: (state, action) => {
       state.data = action.payload;
-      console.log(state.data);
     },
     saveInfo: (state, action) => {
       state.info = action.payload;
